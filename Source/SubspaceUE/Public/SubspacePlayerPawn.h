@@ -78,17 +78,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
 	float MouseResponsivenessMultiplier = 2.0f;
 
-protected:
-	/** Apply thrust in given direction */
-	void ApplyThrust(const FVector& Direction, float Magnitude);
-
-	/** Apply rotation */
-	void ApplyRotation(const FVector& RotationAxis, float Magnitude);
-
-	/** Update Newtonian physics */
-	void UpdatePhysics(float DeltaTime);
-
-	// Input handlers
+	// Input handlers - Public to allow controller access
 	void MoveForward(float Value);
 	void MoveRight(float Value);
 	void MoveUp(float Value);
@@ -98,4 +88,14 @@ protected:
 	void LookUp(float Value);
 	void LookRight(float Value);
 	void EmergencyBrake();
+
+protected:
+	/** Apply thrust in given direction */
+	void ApplyThrust(const FVector& Direction, float Magnitude);
+
+	/** Apply rotation */
+	void ApplyRotation(const FVector& RotationAxis, float Magnitude);
+
+	/** Update Newtonian physics */
+	void UpdatePhysics(float DeltaTime);
 };

@@ -82,9 +82,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Ship")
 	float GetEnergyPercentage() const;
 
-	/** Take damage to hull/shields */
+	/** Override TakeDamage from APawn */
+	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+	/** Apply damage to hull/shields (simplified version for direct use) */
 	UFUNCTION(BlueprintCallable, Category = "Ship")
-	void TakeDamage(float Amount);
+	void ApplyDamage(float Amount);
 
 	/** Regenerate shields */
 	UFUNCTION(BlueprintCallable, Category = "Ship")

@@ -155,7 +155,18 @@ float AUlyssesShip::GetEnergyPercentage() const
 	return (CurrentEnergy / Stats.PowerGeneration) * 100.0f;
 }
 
-void AUlyssesShip::TakeDamage(float Amount)
+float AUlyssesShip::TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	// Call base class implementation
+	float ActualDamage = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
+	
+	// Apply damage to shields and hull
+	ApplyDamage(ActualDamage);
+	
+	return ActualDamage;
+}
+
+void AUlyssesShip::ApplyDamage(float Amount)
 {
 	if (Amount <= 0.0f) return;
 
