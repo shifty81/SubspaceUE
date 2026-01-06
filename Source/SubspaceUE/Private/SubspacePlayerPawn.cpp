@@ -170,8 +170,8 @@ void ASubspacePlayerPawn::LookUp(float Value)
 		}
 		
 		// For FPS-style controls, rotate the camera/ship based on mouse movement
-		// Use a higher multiplier for more responsive mouse control
-		ApplyRotation(FVector(0, 1, 0), PitchValue * 2.0f);
+		// Use the responsiveness multiplier for more responsive mouse control
+		ApplyRotation(FVector(0, 1, 0), PitchValue * MouseResponsivenessMultiplier);
 	}
 }
 
@@ -187,8 +187,8 @@ void ASubspacePlayerPawn::LookRight(float Value)
 		}
 		
 		// For FPS-style controls, rotate the camera/ship based on mouse movement
-		// Use a higher multiplier for more responsive mouse control
-		ApplyRotation(FVector(0, 0, 1), YawValue * 2.0f);
+		// Use the responsiveness multiplier for more responsive mouse control
+		ApplyRotation(FVector(0, 0, 1), YawValue * MouseResponsivenessMultiplier);
 	}
 }
 

@@ -10,15 +10,16 @@ Updated the SubspaceUE project to use FPS-style mouse look controls, making the 
 1. **Source/SubspaceUE/Public/SubspacePlayerPawn.h**
    - Added mouse sensitivity properties: `MousePitchSensitivity`, `MouseYawSensitivity` (default: 1.0)
    - Added mouse inversion options: `bInvertMousePitch`, `bInvertMouseYaw`
+   - Added mouse responsiveness multiplier: `MouseResponsivenessMultiplier` (default: 2.0)
    - Added new input handlers: `LookUp()`, `LookRight()`
    - All properties are exposed to Blueprint for easy tweaking
 
 2. **Source/SubspaceUE/Private/SubspacePlayerPawn.cpp**
    - Implemented `LookUp()` function for mouse pitch control (up/down looking)
    - Implemented `LookRight()` function for mouse yaw control (left/right looking)
-   - Applied 2x multiplier for more responsive mouse control
+   - Applied configurable responsiveness multiplier for responsive mouse control
    - Bound new mouse input axes in `SetupPlayerInputComponent()`
-   - Mouse input respects sensitivity and inversion settings
+   - Mouse input respects sensitivity, inversion, and responsiveness settings
 
 3. **Config/DefaultInput.ini**
    - Added axis mapping: `LookUp` bound to `MouseY` (inverted scale)
@@ -62,9 +63,9 @@ This update aligns the controls with X4: Foundations style:
    - Play in Editor (PIE) and test mouse look
 
 2. **Sensitivity Tuning**:
-   - Default sensitivity: 1.0
-   - Increase for faster response: 1.5-2.0
-   - Decrease for precision: 0.5-0.8
+   - Mouse sensitivity (per axis): Default 1.0, increase for faster (1.5-2.0), decrease for precision (0.5-0.8)
+   - Responsiveness multiplier: Default 2.0, increase for more responsive (2.5-3.0), decrease for smoother (1.0-1.5)
+   - Combine both for fine-tuned control feel
 
 3. **Inversion Testing**:
    - Enable `bInvertMousePitch` for inverted Y-axis

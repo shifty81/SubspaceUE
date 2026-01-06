@@ -74,6 +74,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
 	bool bInvertMouseYaw = false;
 
+	/** Mouse responsiveness multiplier (higher = more responsive) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	float MouseResponsivenessMultiplier = 2.0f;
+
 protected:
 	/** Apply thrust in given direction */
 	void ApplyThrust(const FVector& Direction, float Magnitude);
