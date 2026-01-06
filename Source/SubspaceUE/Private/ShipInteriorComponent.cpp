@@ -2,6 +2,8 @@
 
 #include "ShipInteriorComponent.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogShipInterior, Log, All);
+
 UShipInteriorComponent::UShipInteriorComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
@@ -69,7 +71,7 @@ void UShipInteriorComponent::GenerateUlyssesInterior()
 	AddCell(GenerateCargoBay());
 	AddCell(GenerateEngineRoom());
 
-	UE_LOG(LogTemp, Log, TEXT("Generated Ulysses interior: %d rooms, %d crew capacity"), 
+	UE_LOG(LogShipInterior, Log, TEXT("Generated Ulysses interior: %d rooms, %d crew capacity"), 
 		Cells.Num(), GetTotalCrewCapacity());
 }
 

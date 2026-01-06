@@ -5,6 +5,8 @@
 #include "ShipEquipmentComponent.h"
 #include "Components/StaticMeshComponent.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogUlyssesShip, Log, All);
+
 AUlyssesShip::AUlyssesShip()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -77,7 +79,7 @@ void AUlyssesShip::InitializeUlysses()
 	// Setup interior
 	SetupInterior();
 
-	UE_LOG(LogTemp, Log, TEXT("Ulysses initialized: Hull=%.0f, Shield=%.0f, Speed=%.1f m/s"), 
+	UE_LOG(LogUlyssesShip, Log, TEXT("Ulysses initialized: Hull=%.0f, Shield=%.0f, Speed=%.1f m/s"), 
 		Stats.MaxHull, Stats.MaxShield, Stats.MaxSpeed);
 }
 
@@ -114,7 +116,7 @@ void AUlyssesShip::SetupDefaultEquipment()
 	// - Basic Shield Generator
 	// - Basic Power Generator
 
-	UE_LOG(LogTemp, Log, TEXT("Ulysses equipment setup: %d primary weapons, %d utility slots"),
+	UE_LOG(LogUlyssesShip, Log, TEXT("Ulysses equipment setup: %d primary weapons, %d utility slots"),
 		Stats.PrimaryWeaponSlots, Stats.UtilitySlots);
 }
 
@@ -132,7 +134,7 @@ void AUlyssesShip::SetupInterior()
 	// 3. Cargo Bay - Storage area
 	// 4. Engine Room - Power systems
 
-	UE_LOG(LogTemp, Log, TEXT("Ulysses interior setup complete"));
+	UE_LOG(LogUlyssesShip, Log, TEXT("Ulysses interior setup complete"));
 }
 
 float AUlyssesShip::GetHullPercentage() const
@@ -173,7 +175,7 @@ void AUlyssesShip::TakeDamage(float Amount)
 		if (CurrentHull <= 0.0f)
 		{
 			// Ship destroyed
-			UE_LOG(LogTemp, Warning, TEXT("Ulysses destroyed!"));
+			UE_LOG(LogUlyssesShip, Warning, TEXT("Ulysses destroyed!"));
 			// TODO: Handle ship destruction
 		}
 	}

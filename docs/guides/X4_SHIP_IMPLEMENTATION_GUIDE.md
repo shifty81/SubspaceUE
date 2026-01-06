@@ -141,7 +141,7 @@ The `UShipInteriorComponent` supports 10 room types:
 
 ### Interior Object Types
 
-12 interactive object types:
+12 object types available:
 - Terminal (Computer access)
 - Chair/Seat
 - Storage Container
@@ -155,32 +155,39 @@ The `UShipInteriorComponent` supports 10 room types:
 - Light Fixture
 - Door
 
+**Note:** Ulysses uses 14 total object instances across all rooms (multiple chairs, terminals, etc.)
+
 ### Ulysses Interior Layout
 
 **1. Cockpit/Bridge** (Forward)
-- Captain's chair
-- Helm console
-- Navigation terminal
-- Tactical terminal
+- Captain's chair (1)
+- Helm console (1)
+- Navigation terminal (1)
+- Tactical terminal (1)
+- **4 objects total**
 - Crew capacity: 3
 
 **2. Crew Quarters** (Mid-Forward)
-- 4 crew bunks
+- 4 crew bunks (beds)
 - 4 personal lockers
-- Central table
+- Central table (1)
+- **9 objects total**
 - Crew capacity: 4
 
 **3. Cargo Bay** (Mid-Aft)
 - 6 cargo crates (3x2 grid)
 - 4 wall-mounted storage containers
+- **10 objects total**
 - Crew capacity: 0
 
 **4. Engine Room** (Aft)
 - 3 power nodes
-- Engineering terminal
-- Maintenance workbench
+- Engineering terminal (1)
+- Maintenance workbench (1)
+- **5 objects total**
 - Crew capacity: 2
 
+**Total Object Count:** 28 objects across 4 rooms  
 **Total Crew Capacity:** 9
 
 ### Usage in C++

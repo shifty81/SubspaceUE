@@ -2,6 +2,8 @@
 
 #include "ShipEquipmentComponent.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogShipEquipment, Log, All);
+
 UShipEquipmentComponent::UShipEquipmentComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
@@ -26,7 +28,7 @@ bool UShipEquipmentComponent::InstallEquipment(int32 SlotIndex, const FEquipment
 {
 	if (!EquipmentSlots.IsValidIndex(SlotIndex))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Invalid equipment slot index: %d"), SlotIndex);
+		UE_LOG(LogShipEquipment, Warning, TEXT("Invalid equipment slot index: %d"), SlotIndex);
 		return false;
 	}
 
@@ -34,7 +36,7 @@ bool UShipEquipmentComponent::InstallEquipment(int32 SlotIndex, const FEquipment
 	Slot.Equipment = Equipment;
 	Slot.bIsOccupied = true;
 
-	UE_LOG(LogTemp, Log, TEXT("Installed %s in slot %d"), *Equipment.ItemName, SlotIndex);
+	UE_LOG(LogShipEquipment, Log, TEXT("Installed %s in slot %d"), *Equipment.ItemName, SlotIndex);
 	return true;
 }
 
@@ -153,7 +155,7 @@ void UShipEquipmentComponent::SetupUlyssesEquipment()
 	ShieldSlot.Equipment = CreateShieldGenerator(1);
 	AddEquipmentSlot(ShieldSlot);
 
-	UE_LOG(LogTemp, Log, TEXT("Ulysses equipment setup complete: %d slots, %.1f W power consumption"),
+	UE_LOG(LogShipEquipment, Log, TEXT("Ulysses equipment setup complete: %d slots, %.1f W power consumption"),
 		EquipmentSlots.Num(), GetTotalPowerConsumption());
 }
 
