@@ -96,4 +96,43 @@ protected:
 
 	/** Round position for lookup key */
 	static FVector RoundPosition(const FVector& Position);
+
+	// Greedy meshing helper functions
+	
+	/** Process one axis for greedy meshing */
+	void GreedyMeshAxis(
+		const TArray<const FVoxelBlock*>& VoxelGrid,
+		const FIntVector& GridSize,
+		const FIntVector& GridMin,
+		int32 Axis,
+		int32 Direction,
+		TArray<FVector>& Vertices,
+		TArray<int32>& Triangles,
+		TArray<FVector>& Normals,
+		TArray<FColor>& VertexColors);
+
+	/** Get grid coordinates based on axis orientation */
+	static FIntVector GetAxisCoords(int32 Axis, int32 U, int32 V, int32 W);
+
+	/** Get voxel block from grid with bounds checking */
+	static const FVoxelBlock* GetVoxelFromGrid(
+		const TArray<const FVoxelBlock*>& VoxelGrid,
+		const FIntVector& GridSize,
+		const FIntVector& Coords);
+
+	/** Add a greedy-meshed quad to the mesh arrays */
+	void AddGreedyQuad(
+		const FIntVector& GridMin,
+		int32 Axis,
+		int32 Direction,
+		int32 Depth,
+		int32 U,
+		int32 V,
+		int32 Width,
+		int32 Height,
+		const FVoxelBlock& Block,
+		TArray<FVector>& Vertices,
+		TArray<int32>& Triangles,
+		TArray<FVector>& Normals,
+		TArray<FColor>& VertexColors);
 };
