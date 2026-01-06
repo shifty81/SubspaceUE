@@ -10,16 +10,16 @@ echo ""
 # Set the Unreal Engine path (adjust if your installation is different)
 # Common locations:
 # Linux: ~/UnrealEngine or /opt/UnrealEngine
-# Mac: ~/UnrealEngine or /Applications/Epic\ Games/UE_5.6
+# Mac: ~/UnrealEngine or ~/Library/Epic Games/UE_5.6
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
+    # macOS - adjust this path to match your installation
     UE_PATH="$HOME/UnrealEngine"
     UE_EDITOR="$UE_PATH/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor"
     UE_BUILD="$UE_PATH/Engine/Build/BatchFiles/Mac/Build.sh"
     PLATFORM="Mac"
 else
-    # Linux
+    # Linux - adjust this path to match your installation
     UE_PATH="$HOME/UnrealEngine"
     UE_EDITOR="$UE_PATH/Engine/Binaries/Linux/UnrealEditor"
     UE_BUILD="$UE_PATH/Engine/Build/BatchFiles/Linux/Build.sh"
