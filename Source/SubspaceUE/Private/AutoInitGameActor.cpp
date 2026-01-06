@@ -3,6 +3,7 @@
 #include "AutoInitGameActor.h"
 #include "Engine/World.h"
 #include "GameFramework/WorldSettings.h"
+#include "GameFramework/GameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
 AAutoInitGameActor::AAutoInitGameActor()
@@ -38,7 +39,7 @@ void AAutoInitGameActor::SetupWorldSettings()
 	{
 		// Disable gravity (we're in space!)
 		WorldSettings->bWorldGravitySet = true;
-		WorldSettings->WorldGravity = 0.0f;
+		WorldSettings->GlobalGravityZ = 0.0f;
 		
 		// Set a black background color for space
 		WorldSettings->bOverrideDefaultBroadphaseSettings = true;
