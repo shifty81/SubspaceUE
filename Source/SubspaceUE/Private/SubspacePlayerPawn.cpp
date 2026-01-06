@@ -15,20 +15,26 @@ ASubspacePlayerPawn::ASubspacePlayerPawn()
 	ShipMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
 	RootComponent = ShipMesh;
 	ShipMesh->SetSimulatePhysics(false); // We'll handle physics manually
+	ShipMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	
 	// Load a default mesh if available (can be overridden in Blueprint)
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMeshAsset(TEXT("/Engine/BasicShapes/Cube"));
 	if (ShipMeshAsset.Succeeded())
 	{
 		ShipMesh->SetStaticMesh(ShipMeshAsset.Object);
-		ShipMesh->SetRelativeScale3D(FVector(2.0f, 4.0f, 1.0f)); // Make it ship-shaped
+		ShipMesh->SetRelativeScale3D(FVector(4.0f, 8.0f, 2.0f)); // Make it ship-shaped (larger and more visible)
 	}
 
 	// Create spring arm for camera
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(RootComponent);
-	SpringArm->TargetArmLength = 1000.0f;
+	SpringArm->TargetArmLength = CameraDistance;
 	SpringArm->bDoCollisionTest = false;
+	SpringArm->bEnableCameraLag = true;
+	SpringArm->CameraLagSpeed = CameraLagSpeed;
+	SpringArm->bEnableCameraRotationLag = true;
+	SpringArm->CameraRotationLagSpeed = 10.0f;
+	SpringArm->SetRelativeRotation(FRotator(CameraPitchOffset, 0.0f, 0.0f));
 
 	// Create camera
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
@@ -81,14 +87,22 @@ void ASubspacePlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	
 	// Bind action inputs
 	PlayerInputComponent->BindAction("Brake", IE_Pressed, this, &ASubspacePlayerPawn::EmergencyBrake);
+	PlayerInputComponent->BindAction("ToggleCameraMode", IE_Pressed, this, &ASubspacePlayerPawn::ToggleCameraMode);
+	
+	// Bind camera controls
+	PlayerInputComponent->BindAxis("MouseWheelAxis", this, &ASubspacePlayerPawn::ZoomCamera);
 }
 
 void ASubspacePlayerPawn::ApplyThrust(const FVector& Direction, float Magnitude)
 {
+	// Force = Mass * Acceleration
+	// Acceleration = Force / Mass
 	FVector Force = Direction * Magnitude * MaxThrust;
 	// Convert to world space
 	FVector WorldForce = GetActorRotation().RotateVector(Force);
-	Velocity += WorldForce * GetWorld()->GetDeltaSeconds();
+	// Apply acceleration (F = ma, so a = F/m)
+	FVector Acceleration = WorldForce / ShipMass;
+	Velocity += Acceleration * GetWorld()->GetDeltaSeconds();
 }
 
 void ASubspacePlayerPawn::ApplyRotation(const FVector& RotationAxis, float Magnitude)
@@ -99,12 +113,19 @@ void ASubspacePlayerPawn::ApplyRotation(const FVector& RotationAxis, float Magni
 
 void ASubspacePlayerPawn::UpdatePhysics(float DeltaTime)
 {
-	// Apply velocity to position
+	// Apply velocity to position (Unreal uses cm, so velocity is in cm/s)
 	FVector NewLocation = GetActorLocation() + (Velocity * DeltaTime);
 	SetActorLocation(NewLocation);
 
-	// Apply drag
-	Velocity *= (1.0f - DragCoefficient * DeltaTime);
+	// Apply quadratic drag: Drag = 0.5 * Cd * v^2
+	// This creates more realistic speed limiting
+	float Speed = Velocity.Size();
+	if (Speed > 0.01f)
+	{
+		FVector DragForce = -Velocity.GetSafeNormal() * DragCoefficient * Speed * Speed;
+		FVector DragAcceleration = DragForce / ShipMass;
+		Velocity += DragAcceleration * DeltaTime;
+	}
 
 	// Apply angular velocity to rotation
 	FRotator DeltaRotation = FRotator(
@@ -116,6 +137,12 @@ void ASubspacePlayerPawn::UpdatePhysics(float DeltaTime)
 
 	// Apply angular drag
 	AngularVelocity *= (1.0f - DragCoefficient * DeltaTime);
+	
+	// Update camera
+	if (SpringArm)
+	{
+		SpringArm->TargetArmLength = CameraDistance;
+	}
 }
 
 void ASubspacePlayerPawn::MoveForward(float Value)
@@ -205,4 +232,45 @@ void ASubspacePlayerPawn::EmergencyBrake()
 	Velocity = FVector::ZeroVector;
 	AngularVelocity = FVector::ZeroVector;
 	UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Emergency brake engaged"));
+}
+
+void ASubspacePlayerPawn::ZoomCamera(float Value)
+{
+	if (Value != 0.0f)
+	{
+		CameraDistance = FMath::Clamp(
+			CameraDistance - (Value * CameraZoomSpeed),
+			MinCameraDistance,
+			MaxCameraDistance
+		);
+		
+		if (SpringArm)
+		{
+			SpringArm->TargetArmLength = CameraDistance;
+		}
+	}
+}
+
+void ASubspacePlayerPawn::ToggleCameraMode()
+{
+	bThirdPersonCamera = !bThirdPersonCamera;
+	
+	if (bThirdPersonCamera)
+	{
+		// Third person view
+		if (SpringArm)
+		{
+			SpringArm->TargetArmLength = CameraDistance;
+		}
+		UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Third person camera enabled"));
+	}
+	else
+	{
+		// First person view (cockpit)
+		if (SpringArm)
+		{
+			SpringArm->TargetArmLength = 0.0f;
+		}
+		UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: First person camera enabled"));
+	}
 }

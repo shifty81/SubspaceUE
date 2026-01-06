@@ -6,6 +6,7 @@
 #include "SubspaceHUD.h"
 #include "SpaceActor.h"
 #include "SpaceLightingActor.h"
+#include "SpaceSkyboxActor.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
@@ -31,11 +32,20 @@ void ASubspaceGameMode::BeginPlay()
 
 	UE_LOG(LogTemp, Log, TEXT("SubspaceGameMode: Initializing game systems..."));
 	
-	// Spawn lighting
+	// Spawn space skybox
 	if (GetWorld())
 	{
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		
+		// Spawn skybox
+		ASpaceSkyboxActor* Skybox = GetWorld()->SpawnActor<ASpaceSkyboxActor>(ASpaceSkyboxActor::StaticClass(), FVector::ZeroVector, FRotator::ZeroRotator, SpawnParams);
+		if (Skybox)
+		{
+			UE_LOG(LogTemp, Log, TEXT("SubspaceGameMode: Space skybox spawned"));
+		}
+		
+		// Spawn lighting
 		GetWorld()->SpawnActor<ASpaceLightingActor>(ASpaceLightingActor::StaticClass(), FVector::ZeroVector, FRotator::ZeroRotator, SpawnParams);
 		UE_LOG(LogTemp, Log, TEXT("SubspaceGameMode: Lighting spawned"));
 	}

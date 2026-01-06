@@ -38,6 +38,34 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Subspace|Camera")
 	class USpringArmComponent* SpringArm;
 
+	/** Camera distance from ship */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	float CameraDistance = 1000.0f;
+
+	/** Minimum camera distance */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	float MinCameraDistance = 300.0f;
+
+	/** Maximum camera distance */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	float MaxCameraDistance = 5000.0f;
+
+	/** Camera zoom speed */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	float CameraZoomSpeed = 100.0f;
+
+	/** Camera pitch offset (degrees) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	float CameraPitchOffset = -15.0f;
+
+	/** Enable third-person camera mode */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	bool bThirdPersonCamera = true;
+
+	/** Camera lag speed for smooth following */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Camera")
+	float CameraLagSpeed = 3.0f;
+
 	/** Current velocity */
 	UPROPERTY(BlueprintReadOnly, Category = "Subspace|Physics")
 	FVector Velocity;
@@ -46,17 +74,21 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Subspace|Physics")
 	FVector AngularVelocity;
 
-	/** Maximum thrust force */
+	/** Maximum thrust force (in Newtons, scaled for UE units: cm) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Physics")
-	float MaxThrust = 10000.0f;
+	float MaxThrust = 50000.0f;
 
 	/** Maximum rotation force */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Physics")
 	float MaxRotationForce = 5000.0f;
 
-	/** Drag coefficient */
+	/** Drag coefficient (higher = more drag, slower max speed) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Physics")
-	float DragCoefficient = 0.1f;
+	float DragCoefficient = 0.5f;
+
+	/** Ship mass in kg */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Physics")
+	float ShipMass = 1000.0f;
 
 	/** Mouse look sensitivity for pitch */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
@@ -88,6 +120,8 @@ public:
 	void LookUp(float Value);
 	void LookRight(float Value);
 	void EmergencyBrake();
+	void ZoomCamera(float Value);
+	void ToggleCameraMode();
 
 protected:
 	/** Apply thrust in given direction */
