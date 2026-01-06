@@ -117,13 +117,14 @@ void ASubspacePlayerPawn::UpdatePhysics(float DeltaTime)
 	FVector NewLocation = GetActorLocation() + (Velocity * DeltaTime);
 	SetActorLocation(NewLocation);
 
-	// Apply quadratic drag: Drag = 0.5 * Cd * v^2
-	// This creates more realistic speed limiting
+	// Apply simplified quadratic drag: Drag_force = Cd * v^2 (omitting density for gameplay tuning)
+	// This creates more realistic speed limiting than linear drag
 	float Speed = Velocity.Size();
 	if (Speed > 0.01f)
 	{
 		float SpeedSquared = Speed * Speed; // Cache for performance
-		FVector DragForce = -Velocity.GetSafeNormal() * DragCoefficient * SpeedSquared;
+		FVector VelocityDirection = Velocity / Speed; // Normalize velocity (cached to avoid GetSafeNormal)
+		FVector DragForce = -VelocityDirection * DragCoefficient * SpeedSquared;
 		FVector DragAcceleration = DragForce / ShipMass;
 		Velocity += DragAcceleration * DeltaTime;
 	}

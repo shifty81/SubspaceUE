@@ -25,7 +25,6 @@ ASpaceSkyboxActor::ASpaceSkyboxActor()
 	if (SphereMesh.Succeeded())
 	{
 		SkyboxMesh->SetStaticMesh(SphereMesh.Object);
-		SkyboxMesh->SetWorldScale3D(FVector(SkyboxRadius / MeshScaleFactor));
 	}
 
 	// Set up mesh properties
@@ -35,7 +34,7 @@ ASpaceSkyboxActor::ASpaceSkyboxActor()
 	SkyboxMesh->bVisibleInRayTracing = false;
 	SkyboxMesh->bVisibleInRealTimeSkyCaptures = false;
 
-	// Flip normals by scaling negatively on X-axis (so we see the inside of the sphere)
+	// Set scale and flip normals on X-axis (so we see the inside of the sphere)
 	SkyboxMesh->SetRelativeScale3D(FVector(-SkyboxRadius / MeshScaleFactor, SkyboxRadius / MeshScaleFactor, SkyboxRadius / MeshScaleFactor));
 }
 
