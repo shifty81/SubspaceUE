@@ -38,7 +38,7 @@ void AAutoInitGameActor::SetupWorldSettings()
 	if (WorldSettings)
 	{
 		// Disable gravity (we're in space!)
-		WorldSettings->bWorldGravitySet = true;
+		WorldSettings->bGlobalGravitySet = true;
 		WorldSettings->GlobalGravityZ = 0.0f;
 		
 		// Set a black background color for space
