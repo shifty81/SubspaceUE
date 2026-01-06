@@ -4,6 +4,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "UObject/ConstructorHelpers.h"
 
 ASubspacePlayerPawn::ASubspacePlayerPawn()
 {
@@ -13,6 +14,14 @@ ASubspacePlayerPawn::ASubspacePlayerPawn()
 	ShipMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
 	RootComponent = ShipMesh;
 	ShipMesh->SetSimulatePhysics(false); // We'll handle physics manually
+	
+	// Load a default mesh if available (can be overridden in Blueprint)
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMeshAsset(TEXT("/Engine/BasicShapes/Cube"));
+	if (ShipMeshAsset.Succeeded())
+	{
+		ShipMesh->SetStaticMesh(ShipMeshAsset.Object);
+		ShipMesh->SetRelativeScale3D(FVector(2.0f, 4.0f, 1.0f)); // Make it ship-shaped
+	}
 
 	// Create spring arm for camera
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
