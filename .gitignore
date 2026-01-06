@@ -484,3 +484,66 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# ============================================
+# Unreal Engine 5 Specific Ignores
+# ============================================
+
+# Visual Studio 2022 cache for Unreal
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Unreal Engine Build Files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Build/
+*.opensdf
+*.sdf
+*.suo
+*.sln
+*.xcodeproj
+*.xcworkspace
+
+# Unreal Engine Saved Files
+Saved/
+.vscode/
+.idea/
+
+# Unreal Engine Cache
+*_BuiltData.uasset
+*.umap
+
+# Compiled artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Unreal Engine asset registry
+/AssetRegistry.bin
+/DerivedDataCache/
+
+# Package files
+*.upk
+*.uproject
+
+# Ignore project files from being committed unless explicitly added
+# (We want SubspaceUE.uproject tracked)
+!SubspaceUE.uproject
+
+# Starter Content (optional - can be quite large)
+Content/StarterContent/
+
+# Marketplace content (don't commit purchased assets)
+Content/Marketplace/
+
+# Crash reports
+CrashReportClient/
+
+# Encryption key
+Config/GeneratedCryptoKeys.ini
+
