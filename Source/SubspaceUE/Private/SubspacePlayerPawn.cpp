@@ -62,10 +62,14 @@ void ASubspacePlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	PlayerInputComponent->BindAxis("MoveRight", this, &ASubspacePlayerPawn::MoveRight);
 	PlayerInputComponent->BindAxis("MoveUp", this, &ASubspacePlayerPawn::MoveUp);
 	
-	// Bind rotation inputs
+	// Bind rotation inputs (keyboard - arrow keys)
 	PlayerInputComponent->BindAxis("Pitch", this, &ASubspacePlayerPawn::PitchInput);
 	PlayerInputComponent->BindAxis("Yaw", this, &ASubspacePlayerPawn::YawInput);
 	PlayerInputComponent->BindAxis("Roll", this, &ASubspacePlayerPawn::RollInput);
+	
+	// Bind mouse look inputs (FPS-style)
+	PlayerInputComponent->BindAxis("LookUp", this, &ASubspacePlayerPawn::LookUp);
+	PlayerInputComponent->BindAxis("LookRight", this, &ASubspacePlayerPawn::LookRight);
 	
 	// Bind action inputs
 	PlayerInputComponent->BindAction("Brake", IE_Pressed, this, &ASubspacePlayerPawn::EmergencyBrake);
@@ -151,6 +155,40 @@ void ASubspacePlayerPawn::RollInput(float Value)
 	if (Value != 0.0f)
 	{
 		ApplyRotation(FVector(1, 0, 0), Value);
+	}
+}
+
+void ASubspacePlayerPawn::LookUp(float Value)
+{
+	if (Value != 0.0f)
+	{
+		// Apply mouse pitch with sensitivity and inversion
+		float PitchValue = Value * MousePitchSensitivity;
+		if (bInvertMousePitch)
+		{
+			PitchValue = -PitchValue;
+		}
+		
+		// For FPS-style controls, rotate the camera/ship based on mouse movement
+		// Use the responsiveness multiplier for more responsive mouse control
+		ApplyRotation(FVector(0, 1, 0), PitchValue * MouseResponsivenessMultiplier);
+	}
+}
+
+void ASubspacePlayerPawn::LookRight(float Value)
+{
+	if (Value != 0.0f)
+	{
+		// Apply mouse yaw with sensitivity and inversion
+		float YawValue = Value * MouseYawSensitivity;
+		if (bInvertMouseYaw)
+		{
+			YawValue = -YawValue;
+		}
+		
+		// For FPS-style controls, rotate the camera/ship based on mouse movement
+		// Use the responsiveness multiplier for more responsive mouse control
+		ApplyRotation(FVector(0, 0, 1), YawValue * MouseResponsivenessMultiplier);
 	}
 }
 

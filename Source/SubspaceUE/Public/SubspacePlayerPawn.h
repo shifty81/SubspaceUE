@@ -58,6 +58,26 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Physics")
 	float DragCoefficient = 0.1f;
 
+	/** Mouse look sensitivity for pitch */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	float MousePitchSensitivity = 1.0f;
+
+	/** Mouse look sensitivity for yaw */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	float MouseYawSensitivity = 1.0f;
+
+	/** Invert mouse pitch axis */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	bool bInvertMousePitch = false;
+
+	/** Invert mouse yaw axis */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	bool bInvertMouseYaw = false;
+
+	/** Mouse responsiveness multiplier (higher = more responsive) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	float MouseResponsivenessMultiplier = 2.0f;
+
 protected:
 	/** Apply thrust in given direction */
 	void ApplyThrust(const FVector& Direction, float Magnitude);
@@ -75,5 +95,7 @@ protected:
 	void PitchInput(float Value);
 	void YawInput(float Value);
 	void RollInput(float Value);
+	void LookUp(float Value);
+	void LookRight(float Value);
 	void EmergencyBrake();
 };
