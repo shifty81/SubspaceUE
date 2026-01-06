@@ -55,7 +55,7 @@ Codename:Subspace is a powerful game engine designed for creating space games wi
 - ⛏️ Asteroid mining and deformation
 - 💥 Destruction effects
 
-For more information, see [MODULAR_SHIP_SYSTEM_GUIDE.md](MODULAR_SHIP_SYSTEM_GUIDE.md)
+For more information, see [docs/guides/MODULAR_SHIP_SYSTEM_GUIDE.md](docs/guides/MODULAR_SHIP_SYSTEM_GUIDE.md)
 
 ## Core Systems
 
@@ -145,7 +145,7 @@ Real-time OpenGL rendering with enhanced visual quality:
 - **Debug Visualization**: AABB rendering, wireframes, and performance stats
 
 **Texture Customization**: 
-- See [TEXTURE_CUSTOMIZATION_GUIDE.md](TEXTURE_CUSTOMIZATION_GUIDE.md) for how to customize colors and patterns
+- See [docs/guides/TEXTURE_CUSTOMIZATION_GUIDE.md](docs/guides/TEXTURE_CUSTOMIZATION_GUIDE.md) for how to customize colors and patterns
 - Built-in material library with Hull, Armor, Rock, Ice, Metal, and more
 - Easy-to-edit color values and pattern parameters
 
@@ -188,7 +188,7 @@ Real-time OpenGL rendering with enhanced visual quality:
 - Utility (power, shields, cargo, crew quarters, hyperdrive, sensors, mining)
 - Decorative (antennas, details)
 
-**See [MODULAR_SHIP_SYSTEM_GUIDE.md](MODULAR_SHIP_SYSTEM_GUIDE.md) for complete documentation**
+**See [docs/guides/MODULAR_SHIP_SYSTEM_GUIDE.md](docs/guides/MODULAR_SHIP_SYSTEM_GUIDE.md) for complete documentation**
 
 ### 9. Voxel Architecture (Limited Use)
 **Voxels NOW ONLY used for:**
@@ -376,7 +376,7 @@ Real-time OpenGL rendering with enhanced visual quality:
 - Physics manipulation (teleport, velocity)
 - AI behavior control
 - Real-time system testing without restart
-- See [IN_GAME_TESTING_GUIDE.md](IN_GAME_TESTING_GUIDE.md) for complete documentation
+- See [docs/guides/IN_GAME_TESTING_GUIDE.md](docs/guides/IN_GAME_TESTING_GUIDE.md) for complete documentation
 
 ## Getting Started
 
@@ -471,7 +471,7 @@ The application now features a streamlined menu focused on the playable game:
 2. **About / Version Info** - View game information and system requirements
 0. **Exit** - Close the application
 
-> **🎮 For detailed gameplay features, controls, and systems, see [GAMEPLAY_FEATURES.md](GAMEPLAY_FEATURES.md)**
+> **🎮 For detailed gameplay features, controls, and systems, see [docs/guides/GAMEPLAY_FEATURES.md](docs/guides/GAMEPLAY_FEATURES.md)**
 
 #### Starting Your Journey
 
@@ -715,29 +715,28 @@ For detailed credits and acknowledgments, see [CREDITS.md](CREDITS.md).
 ## Documentation
 
 ### 📋 Quick Reference
-- **[Development Status](DEVELOPMENT_STATUS.md)** - 📌 **START HERE** - Current state, priorities, and what's working
-- **[Gameplay Features](GAMEPLAY_FEATURES.md)** - 🎮 **COMPLETE GUIDE** - All gameplay features, controls, and systems
-- **[What's Left to Implement](WHATS_LEFT_TO_IMPLEMENT.md)** - 📝 **DETAILED** - Breakdown of remaining work and priorities
-- **[Roadmap Status](ROADMAP_STATUS.md)** - 📊 **CURRENT STATUS** - Feature completeness and verification results
-- **[Next Steps & Recommendations](NEXT_STEPS.md)** - 📌 **COMPREHENSIVE GUIDE** - Detailed analysis and prioritized recommendations
-- **[Architecture Diagram](ARCHITECTURE_DIAGRAM.md)** - Visual system architecture and component relationships
+- **[Development Status](docs/reference/DEVELOPMENT_STATUS.md)** - 📌 **START HERE** - Current state, priorities, and what's working
+- **[Gameplay Features](docs/guides/GAMEPLAY_FEATURES.md)** - 🎮 **COMPLETE GUIDE** - All gameplay features, controls, and systems
+- **[What's Left to Implement](docs/reference/WHATS_LEFT_TO_IMPLEMENT.md)** - 📝 **DETAILED** - Breakdown of remaining work and priorities
+- **[Roadmap Status](docs/reference/ROADMAP_STATUS.md)** - 📊 **CURRENT STATUS** - Feature completeness and verification results
+- **[Next Steps & Recommendations](docs/reference/NEXT_STEPS.md)** - 📌 **COMPREHENSIVE GUIDE** - Detailed analysis and prioritized recommendations
+- **[Architecture Diagram](docs/architecture/ARCHITECTURE_DIAGRAM.md)** - Visual system architecture and component relationships
 
 ### 📚 Detailed Documentation
 - **[Quick Start Guide](QUICKSTART.md)** - Get up and running in minutes
 - **[How to Build and Run](HOW_TO_BUILD_AND_RUN.md)** - Complete build instructions
-- **[Core Gameplay Mechanics](CORE_GAMEPLAY_MECHANICS.md)** - 🎮 Avorion-inspired design and implementation
-- **[Galaxy Map Guide](GALAXY_MAP_GUIDE.md)** - 🗺️ Complete galaxy map and sector travel documentation
-- **[In-Game Testing Guide](IN_GAME_TESTING_GUIDE.md)** - 🧪 Testing console commands and features
-- **[Quest System Guide](QUEST_SYSTEM_GUIDE.md)** - 📋 Quest creation and management **NEW!**
-- **[Architecture Review](ARCHITECTURE.md)** - Comprehensive backend architecture analysis (540+ lines)
-- **[Implementation Roadmap](IMPLEMENTATION_ROADMAP.md)** - Detailed development plan and timelines
-- **[Executive Summary](EXECUTIVE_SUMMARY.md)** - Backend review summary
-- **[Dependencies](DEPENDENCIES.md)** - Complete list of project dependencies
+- **[Core Gameplay Mechanics](docs/guides/CORE_GAMEPLAY_MECHANICS.md)** - 🎮 Avorion-inspired design and implementation
+- **[Galaxy Map Guide](docs/guides/GALAXY_MAP_GUIDE.md)** - 🗺️ Complete galaxy map and sector travel documentation
+- **[In-Game Testing Guide](docs/guides/IN_GAME_TESTING_GUIDE.md)** - 🧪 Testing console commands and features
+- **[Quest System Guide](docs/guides/QUEST_SYSTEM_GUIDE.md)** - 📋 Quest creation and management **NEW!**
+- **[Architecture Review](docs/architecture/ARCHITECTURE.md)** - Comprehensive backend architecture analysis (540+ lines)
+- **[Implementation Roadmap](docs/implementation/IMPLEMENTATION_ROADMAP.md)** - Detailed development plan and timelines
+- **[Dependencies](docs/reference/DEPENDENCIES.md)** - Complete list of project dependencies
 - **[Contributing](CONTRIBUTING.md)** - How to contribute to the project
 - **[Credits](CREDITS.md)** - Acknowledgments and licenses
-- **[Persistence Guide](PERSISTENCE_GUIDE.md)** - 💾 Complete guide to save/load system
-- **[AI System Guide](AI_SYSTEM_GUIDE.md)** - 🤖 Complete guide to AI behavior system
-- **[Modding Guide](MODDING_GUIDE.md)** - 🎮 Complete Lua modding documentation
+- **[Persistence Guide](docs/guides/PERSISTENCE_GUIDE.md)** - 💾 Complete guide to save/load system
+- **[AI System Guide](docs/guides/AI_SYSTEM_GUIDE.md)** - 🤖 Complete guide to AI behavior system
+- **[Modding Guide](docs/guides/MODDING_GUIDE.md)** - 🎮 Complete Lua modding documentation
 
 ## Troubleshooting
 
