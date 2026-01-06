@@ -24,7 +24,7 @@ ASpaceLightingActor::ASpaceLightingActor()
 	SkyLight->SetupAttachment(RootComponent);
 	SkyLight->SetIntensity(0.5f);
 	SkyLight->SetLightColor(FLinearColor(0.2f, 0.2f, 0.3f)); // Deep blue ambient
-	SkyLight->SetSourceType(ESkyLightSourceType::SLS_CapturedScene);
+	SkyLight->SourceType = ESkyLightSourceType::SLS_CapturedScene;
 }
 
 void ASpaceLightingActor::BeginPlay()
