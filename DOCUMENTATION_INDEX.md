@@ -1,303 +1,157 @@
-# 📚 SubspaceUE Documentation Index
+# SubspaceUE Documentation Index
 
-**Welcome to SubspaceUE!** This is your guide to navigating the documentation for the Unreal Engine 5.7 version of Codename:Subspace.
+**Last Updated:** January 6, 2026  
+**Project:** Codename:Subspace - UE5.7 Migration from C# Engine
+
+Welcome to the SubspaceUE documentation! All documentation has been organized into the `docs/` directory for better structure and maintainability.
 
 ---
 
 ## 🚀 Quick Start
 
-**New to this project?** Start here:
+**New to the project?** Start here:
 
-1. **[SUMMARY.md](SUMMARY.md)** ← **Start here!**
-   - 10-minute read
-   - Executive overview of the entire conversion
-   - What works, what doesn't, what's next
-   
-2. **[GETTING_STARTED_UE5.md](GETTING_STARTED_UE5.md)**
-   - 30-60 minute setup
-   - Prerequisites and installation
-   - First-time build instructions
-   - Common problems solved
+1. **[README.md](README.md)** - Main project overview (C# engine features)
+2. **[ROADMAP.md](ROADMAP.md)** - UE5 migration roadmap and progress  
+3. **[Getting Started (UE5)](docs/migration/GETTING_STARTED_UE5.md)** - Setup guide for UE5 project
+4. **[UE5 Migration Checklist](docs/migration/UE5_MIGRATION_CHECKLIST.md)** ⭐ - Detailed system migration tracking
 
-3. **[README_UE5.md](README_UE5.md)**
-   - Full project documentation
-   - Architecture overview
-   - System descriptions
-   - Code examples
+**Want to help?**
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
+- **[HOW_TO_BUILD_AND_RUN.md](HOW_TO_BUILD_AND_RUN.md)** - Build instructions (C# engine)
 
 ---
 
-## 📖 Documentation by Role
+## 📁 Documentation Structure
 
-### 👨‍💻 For Programmers
+All documentation is now organized in the `docs/` folder:
 
-**Primary Documents:**
-1. [CONVERSION_GUIDE.md](CONVERSION_GUIDE.md) - **Must read!**
-   - System-by-system conversion details
-   - C# to C++ code examples
-   - Implementation recommendations
-   - Architecture patterns
-
-2. [README_UE5.md](README_UE5.md) - Reference
-   - Class documentation
-   - API reference
-   - Code snippets
-
-3. [MIGRATION_STATUS.md](MIGRATION_STATUS.md) - Task tracking
-   - What's implemented
-   - What needs work
-   - System priorities
-
-**Tasks:**
-- Implement voxel system (Week 2)
-- Create gameplay components
-- Port procedural generation
-- Implement AI behavior trees
-- Set up networking
-
-### 🎨 For Artists
-
-**Primary Documents:**
-1. [GETTING_STARTED_UE5.md](GETTING_STARTED_UE5.md) - Setup
-   - Install UE5.7
-   - Project structure
-   - Asset workflow
-
-2. [MIGRATION_STATUS.md](MIGRATION_STATUS.md) - Content needs
-   - Required 3D models
-   - Material requirements
-   - VFX specifications
-
-**Tasks:**
-- Create ship models (player and AI)
-- Model asteroids and stations
-- Design materials and textures
-- Create VFX (weapons, explosions)
-- Design UI elements
-
-### 🎮 For Designers
-
-**Primary Documents:**
-1. [README_UE5.md](README_UE5.md) - Gameplay overview
-   - Game mechanics
-   - Controls
-   - Systems
-
-2. [ROADMAP.md](ROADMAP.md) - Feature timeline
-   - What's coming when
-   - Design opportunities
-
-**Tasks:**
-- Create test levels
-- Design UI/UX
-- Blueprint gameplay logic
-- Balance systems
-- Design quests
-
-### 📊 For Project Managers
-
-**Primary Documents:**
-1. [SUMMARY.md](SUMMARY.md) - Executive summary
-   - Overall progress
-   - Key metrics
-   - Status assessment
-
-2. [ROADMAP.md](ROADMAP.md) - Timeline
-   - 16-week plan
-   - Milestones
-   - Deliverables
-
-3. [MIGRATION_STATUS.md](MIGRATION_STATUS.md) - Detailed progress
-   - Task breakdown
-   - System status
-   - Risk tracking
+```
+docs/
+├── architecture/       # System architecture and design
+├── guides/            # Feature and implementation guides  
+├── implementation/    # Implementation summaries and status
+├── migration/         # UE5 migration documentation
+├── reference/         # Reference materials and status docs
+├── assets/            # Asset-related documentation
+└── images/            # Screenshots and diagrams
+```
 
 ---
 
-## 📑 All Documents
+## 📚 Essential Documents
 
-### UE5-Specific Documentation (NEW)
+### 🏗️ Architecture & Design
+**Location:** `docs/architecture/`
+- [ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) - Complete system architecture
+- [ARCHITECTURE_DIAGRAM.md](docs/architecture/ARCHITECTURE_DIAGRAM.md) - Visual diagrams
+- [AI_VOXEL_SYSTEM_ARCHITECTURE.md](docs/architecture/AI_VOXEL_SYSTEM_ARCHITECTURE.md) - Voxel design
 
-| Document | Size | Purpose | Audience |
-|----------|------|---------|----------|
-| **[SUMMARY.md](SUMMARY.md)** | 10k words | Executive overview | Everyone |
-| **[README_UE5.md](README_UE5.md)** | 10k words | Complete project guide | Developers |
-| **[GETTING_STARTED_UE5.md](GETTING_STARTED_UE5.md)** | 8k words | Setup & first steps | New contributors |
-| **[CONVERSION_GUIDE.md](CONVERSION_GUIDE.md)** | 15k words | Technical implementation | Programmers |
-| **[MIGRATION_STATUS.md](MIGRATION_STATUS.md)** | 10k words | Progress tracking | Project managers |
-| **[ROADMAP.md](ROADMAP.md)** | 7k words | Timeline & milestones | Stakeholders |
+### 🔧 UE5 Migration (PRIORITY)
+**Location:** `docs/migration/`
+- **[UE5_MIGRATION_CHECKLIST.md](docs/migration/UE5_MIGRATION_CHECKLIST.md)** ⭐ - System-by-system tracking (43 systems)
+- [MIGRATION_STATUS.md](docs/migration/MIGRATION_STATUS.md) - Current progress
+- [GETTING_STARTED_UE5.md](docs/migration/GETTING_STARTED_UE5.md) - UE5 setup
+- [CONVERSION_GUIDE.md](docs/migration/CONVERSION_GUIDE.md) - C# to UE5 guide (15k+ words)
+- [README_UE5.md](docs/migration/README_UE5.md) - UE5 project overview
 
-**Total UE5 Documentation:** 60,000+ words
+### 📖 Core System Guides
+**Location:** `docs/guides/`
 
-### Original C# Documentation
+**Critical Systems:**
+- [MODULAR_SHIP_SYSTEM_GUIDE.md](docs/guides/MODULAR_SHIP_SYSTEM_GUIDE.md) - Modular ship construction
+- [AI_SYSTEM_GUIDE.md](docs/guides/AI_SYSTEM_GUIDE.md) - AI behavior system
+- [AI_VOXEL_CONSTRUCTION_GUIDE.md](docs/guides/AI_VOXEL_CONSTRUCTION_GUIDE.md) - Voxel building
+- [PROCEDURAL_GENERATION_GUIDE.md](docs/guides/PROCEDURAL_GENERATION_GUIDE.md) - World generation
+- [GREEDY_MESHING_IMPLEMENTATION.md](docs/guides/GREEDY_MESHING_IMPLEMENTATION.md) - Mesh optimization
 
-These documents describe the original C# implementation and are useful for understanding the source material:
+**Gameplay:**
+- [CORE_GAMEPLAY_MECHANICS.md](docs/guides/CORE_GAMEPLAY_MECHANICS.md) - Core mechanics
+- [GAMEPLAY_FEATURES.md](docs/guides/GAMEPLAY_FEATURES.md) - All features
+- [GALAXY_MAP_GUIDE.md](docs/guides/GALAXY_MAP_GUIDE.md) - Galaxy navigation
 
-| Document | Purpose |
-|----------|---------|
-| [README.md](README.md) | Original C# project overview |
-| [QUICKSTART.md](QUICKSTART.md) | C# quick start guide |
-| [HOW_TO_BUILD_AND_RUN.md](HOW_TO_BUILD_AND_RUN.md) | C# build instructions |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | C# system architecture |
-| [GAMEPLAY_FEATURES.md](GAMEPLAY_FEATURES.md) | Feature descriptions |
-| [MODDING_GUIDE.md](MODDING_GUIDE.md) | Lua scripting guide |
-| [AI_SYSTEM_GUIDE.md](AI_SYSTEM_GUIDE.md) | AI implementation details |
-| [PROCEDURAL_GENERATION_GUIDE.md](PROCEDURAL_GENERATION_GUIDE.md) | Galaxy generation |
-| ... and 80+ more guides | Various systems |
-
-**Note:** C# documentation is for reference only. UE5 implementation differs significantly.
+### 📊 Status & Reference
+**Location:** `docs/reference/`
+- [DEVELOPMENT_STATUS.md](docs/reference/DEVELOPMENT_STATUS.md) - Current status
+- [WHATS_LEFT_TO_IMPLEMENT.md](docs/reference/WHATS_LEFT_TO_IMPLEMENT.md) - Remaining work
+- [NEXT_STEPS.md](docs/reference/NEXT_STEPS.md) - Recommendations
+- [FEATURES.md](docs/reference/FEATURES.md) - Feature list
+- [DEPENDENCIES.md](docs/reference/DEPENDENCIES.md) - Dependencies
 
 ---
 
-## 🎯 Reading Paths
+## 🎯 Documentation by Audience
 
-### Path 1: "I just want to get started"
-```
-1. SUMMARY.md (10 min)
-2. GETTING_STARTED_UE5.md (follow steps, 30-60 min)
-3. Build project, open editor
-4. Start creating!
-```
+### For UE5 Developers
+1. [ROADMAP.md](ROADMAP.md) - Migration plan
+2. [UE5 Migration Checklist](docs/migration/UE5_MIGRATION_CHECKLIST.md) - System tracking
+3. [Getting Started (UE5)](docs/migration/GETTING_STARTED_UE5.md) - Setup
+4. [Conversion Guide](docs/migration/CONVERSION_GUIDE.md) - Conversion patterns
 
-### Path 2: "I want to understand the architecture"
-```
-1. SUMMARY.md (overview)
-2. README_UE5.md (architecture section)
-3. CONVERSION_GUIDE.md (architecture changes)
-4. Look at Source/SubspaceUE/ code
-```
+### For Contributors
+1. [CONTRIBUTING.md](CONTRIBUTING.md) - Guidelines
+2. [ROADMAP.md](ROADMAP.md) - What needs work
+3. [UE5 Migration Checklist](docs/migration/UE5_MIGRATION_CHECKLIST.md) - Pick a system
 
-### Path 3: "I want to implement a system"
-```
-1. MIGRATION_STATUS.md (pick a task)
-2. CONVERSION_GUIDE.md (implementation details for that system)
-3. Original C# code in AvorionLike/Core/
-4. Implement in UE5
-5. Test and commit
-```
+### For Testers
+1. [README.md](README.md) - Project overview
+2. [HOW_TO_BUILD_AND_RUN.md](HOW_TO_BUILD_AND_RUN.md) - Build instructions
+3. [Gameplay Features](docs/guides/GAMEPLAY_FEATURES.md) - Features
 
-### Path 4: "I need to report progress to stakeholders"
-```
-1. SUMMARY.md (current status)
-2. ROADMAP.md (timeline)
-3. MIGRATION_STATUS.md (detailed breakdown)
-4. Generate report
-```
+---
+
+## 📂 Full Documentation Listing
+
+### All Guides (docs/guides/)
+**Over 70 comprehensive guides covering every aspect of the system.**
+
+View the complete listing in the `docs/guides/` directory. Key highlights:
+- 🚀 Ship systems (15+ guides)
+- 🎨 Graphics & visuals (10+ guides)
+- ⚔️ Combat & AI (8+ guides)
+- 🌍 World generation (5+ guides)
+- 🎮 UI & player experience (6+ guides)
+- 🔧 Systems & features (15+ guides)
+- 🧪 Testing & development (3+ guides)
+
+### All Implementation Docs (docs/implementation/)
+**20+ implementation summaries tracking feature completion.**
+
+### All Migration Docs (docs/migration/)
+**8 essential documents for UE5 migration.**
+
+---
+
+## 📊 Migration Progress
+
+**Overall:** ~15% Complete  
+- ✅ Complete: 4 systems (Core framework)
+- 🔨 In Progress: 3 systems (Voxel, Physics, Input)
+- 🔴 Not Started: 36 systems (85% remaining)
+
+See [UE5 Migration Checklist](docs/migration/UE5_MIGRATION_CHECKLIST.md) for full details.
 
 ---
 
 ## 🔍 Quick Reference
 
-### Important Files
-
-**Project Files:**
-- `SubspaceUE.uproject` - Main project file
-- `Source/SubspaceUE/` - C++ source code
-- `Config/` - Configuration files
-- `Content/` - Asset directory
-
-**Key Classes:**
-- `ASubspaceGameMode` - Game logic
-- `ASubspacePlayerPawn` - Player ship
-- `ASubspacePlayerController` - Input handling
-- `USubspaceGameInstance` - Persistent data
-
-### Quick Links
-
-**External Resources:**
-- [Unreal Engine 5.7 Docs](https://docs.unrealengine.com/5.7/)
-- [C++ Programming Guide](https://docs.unrealengine.com/5.7/en-US/programming-with-cplusplus-in-unreal-engine/)
-- [Gameplay Framework](https://docs.unrealengine.com/5.7/en-US/gameplay-framework-in-unreal-engine/)
-
-**Project Resources:**
-- [GitHub Repository](https://github.com/shifty81/SubspaceUE)
-- [Issues](https://github.com/shifty81/SubspaceUE/issues)
-- [Discussions](https://github.com/shifty81/SubspaceUE/discussions)
+| Topic | Document |
+|-------|----------|
+| **UE5 Migration** | [Migration Checklist](docs/migration/UE5_MIGRATION_CHECKLIST.md) ⭐ |
+| **Getting Started** | [Getting Started UE5](docs/migration/GETTING_STARTED_UE5.md) |
+| **Roadmap** | [ROADMAP.md](ROADMAP.md) |
+| **Architecture** | [ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) |
+| **Contributing** | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| **Build Instructions** | [HOW_TO_BUILD_AND_RUN.md](HOW_TO_BUILD_AND_RUN.md) |
 
 ---
 
-## 📊 Documentation Statistics
+## 🤝 Contributing to Documentation
 
-| Metric | Value |
-|--------|-------|
-| **Total UE5 Docs** | 6 files |
-| **Total Words** | 60,000+ |
-| **Code Examples** | 50+ |
-| **Diagrams** | 5+ |
-| **Tables** | 30+ |
-| **Checklists** | 20+ |
+We welcome documentation improvements! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
-## 🤔 FAQ
-
-### "Which document should I read first?"
-Start with [SUMMARY.md](SUMMARY.md) for a 10-minute overview, then [GETTING_STARTED_UE5.md](GETTING_STARTED_UE5.md) to set up.
-
-### "Where's the original C# documentation?"
-See [README.md](README.md) and the 80+ markdown files in the root directory.
-
-### "How do I contribute?"
-Read [GETTING_STARTED_UE5.md](GETTING_STARTED_UE5.md), check [MIGRATION_STATUS.md](MIGRATION_STATUS.md) for tasks, then dive in!
-
-### "What's the current status?"
-See [SUMMARY.md](SUMMARY.md) or [MIGRATION_STATUS.md](MIGRATION_STATUS.md) for detailed progress.
-
-### "When will feature X be done?"
-Check [ROADMAP.md](ROADMAP.md) for the 16-week timeline with milestones.
-
-### "I found a bug/have a question"
-- Bug: Open a [GitHub Issue](https://github.com/shifty81/SubspaceUE/issues)
-- Question: Start a [GitHub Discussion](https://github.com/shifty81/SubspaceUE/discussions)
-
----
-
-## 📝 Document Maintenance
-
-### When to Update
-
-- **SUMMARY.md** - After major milestones
-- **MIGRATION_STATUS.md** - Weekly
-- **ROADMAP.md** - When timeline changes
-- **CONVERSION_GUIDE.md** - When patterns change
-- **README_UE5.md** - When features are added
-- **GETTING_STARTED_UE5.md** - When setup changes
-
-### How to Update
-
-1. Edit the markdown file
-2. Update version/date at bottom
-3. Commit with message "docs: update [filename]"
-4. Update this index if adding new docs
-
----
-
-## 🎉 Welcome!
-
-Whether you're a programmer, artist, designer, or just curious, we're glad you're here!
-
-**SubspaceUE** is a community effort to bring the ambitious Codename:Subspace game engine to Unreal Engine 5.7. We're building a space game with:
-- Voxel-based ship construction
-- Procedural galaxy generation
-- Advanced AI systems
-- Multiplayer support
-- And much more!
-
-**Get started:**
-1. Read [SUMMARY.md](SUMMARY.md)
-2. Follow [GETTING_STARTED_UE5.md](GETTING_STARTED_UE5.md)
-3. Join the development!
-
----
-
-**Questions?** Check the docs or open a GitHub Discussion!  
-**Ready to contribute?** See GETTING_STARTED_UE5.md!  
-**Just exploring?** Start with SUMMARY.md!
-
----
-
-*Last Updated: January 6, 2026*  
-*Documentation Version: 1.0*  
-*Total Documentation: 60k+ words across 6 guides*
-
-**Happy developing! 🚀**
+**Document Status:** ✅ Current  
+**Last Major Update:** January 6, 2026 (Documentation reorganization)  
+**Maintained By:** Development Team
