@@ -1,3 +1,35 @@
+# Codename:Subspace - Unreal Engine 5.6
+
+**Advanced Space Game Engine** - Now powered by Unreal Engine 5.6!
+
+> **🎮 Status:** READY TO PLAY! Core gameplay systems implemented!  
+> **🚀 NEW:** 6DOF ship physics, procedural content spawning, HUD system, and full input controls!  
+> **⚡ Quick Start:** See [QUICKSTART_UE5.md](QUICKSTART_UE5.md) to be playing in **5 minutes**!
+
+## What's Working Right Now
+
+✅ **Player Ship** - Fully controllable with Newtonian 6DOF physics  
+✅ **Controls** - WASD + Arrow Keys + Q/E for complete flight control  
+✅ **HUD System** - Real-time speed, position, and velocity display  
+✅ **Procedural Content** - 50 asteroids and 5 AI ships spawned automatically  
+✅ **Lighting System** - Dynamic sun and ambient lighting  
+✅ **Space Environment** - Zero gravity physics simulation  
+✅ **Input Bindings** - Full keyboard and gamepad support  
+
+## Quick Start (5 Minutes)
+
+```bash
+1. Build the project (F5 in Visual Studio or open .uproject)
+2. Create Content/Maps/SpaceLevel (Empty Level in Unreal Editor)
+3. Press Play (Alt+P)
+4. Fly with WASD! 🚀
+```
+
+**Full instructions:** [QUICKSTART_UE5.md](QUICKSTART_UE5.md)  
+**Automated setup:** Run [create_space_level.py](create_space_level.py) in Unreal's Python console!
+
+---
+
 # Codename:Subspace - Unreal Engine 5.7 Version
 
 This is the Unreal Engine 5.7 conversion of the Codename:Subspace space game engine, originally built in C# .NET.
