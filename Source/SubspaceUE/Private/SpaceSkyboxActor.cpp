@@ -17,12 +17,15 @@ ASpaceSkyboxActor::ASpaceSkyboxActor()
 	SkyboxMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SkyboxMesh"));
 	RootComponent = SkyboxMesh;
 	
+	// Scale factor for converting radius to mesh scale (sphere mesh default size is ~100 units diameter)
+	const float MeshScaleFactor = 50.0f;
+	
 	// Load sphere mesh
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(TEXT("/Engine/BasicShapes/Sphere"));
 	if (SphereMesh.Succeeded())
 	{
 		SkyboxMesh->SetStaticMesh(SphereMesh.Object);
-		SkyboxMesh->SetWorldScale3D(FVector(SkyboxRadius / 50.0f)); // Scale to desired radius
+		SkyboxMesh->SetWorldScale3D(FVector(SkyboxRadius / MeshScaleFactor));
 	}
 
 	// Set up mesh properties
@@ -32,8 +35,8 @@ ASpaceSkyboxActor::ASpaceSkyboxActor()
 	SkyboxMesh->bVisibleInRayTracing = false;
 	SkyboxMesh->bVisibleInRealTimeSkyCaptures = false;
 
-	// Flip normals by scaling negatively (so we see the inside of the sphere)
-	SkyboxMesh->SetRelativeScale3D(FVector(-SkyboxRadius / 50.0f, SkyboxRadius / 50.0f, SkyboxRadius / 50.0f));
+	// Flip normals by scaling negatively on X-axis (so we see the inside of the sphere)
+	SkyboxMesh->SetRelativeScale3D(FVector(-SkyboxRadius / MeshScaleFactor, SkyboxRadius / MeshScaleFactor, SkyboxRadius / MeshScaleFactor));
 }
 
 void ASpaceSkyboxActor::BeginPlay()

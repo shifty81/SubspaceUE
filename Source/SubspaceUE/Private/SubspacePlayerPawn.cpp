@@ -122,7 +122,8 @@ void ASubspacePlayerPawn::UpdatePhysics(float DeltaTime)
 	float Speed = Velocity.Size();
 	if (Speed > 0.01f)
 	{
-		FVector DragForce = -Velocity.GetSafeNormal() * DragCoefficient * Speed * Speed;
+		float SpeedSquared = Speed * Speed; // Cache for performance
+		FVector DragForce = -Velocity.GetSafeNormal() * DragCoefficient * SpeedSquared;
 		FVector DragAcceleration = DragForce / ShipMass;
 		Velocity += DragAcceleration * DeltaTime;
 	}
@@ -238,6 +239,8 @@ void ASubspacePlayerPawn::ZoomCamera(float Value)
 {
 	if (Value != 0.0f)
 	{
+		// Mouse wheel up (positive value) zooms in (decreases distance)
+		// Mouse wheel down (negative value) zooms out (increases distance)
 		CameraDistance = FMath::Clamp(
 			CameraDistance - (Value * CameraZoomSpeed),
 			MinCameraDistance,
