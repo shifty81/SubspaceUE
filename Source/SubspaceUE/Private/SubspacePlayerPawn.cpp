@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "UObject/ConstructorHelpers.h"
+#include "SubspacePlayerController.h"
 
 ASubspacePlayerPawn::ASubspacePlayerPawn()
 {
@@ -51,6 +52,13 @@ void ASubspacePlayerPawn::Tick(float DeltaTime)
 
 	// Update Newtonian physics
 	UpdatePhysics(DeltaTime);
+	
+	// Update HUD if we have a player controller
+	ASubspacePlayerController* PC = Cast<ASubspacePlayerController>(GetController());
+	if (PC)
+	{
+		PC->UpdateHUD();
+	}
 }
 
 void ASubspacePlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

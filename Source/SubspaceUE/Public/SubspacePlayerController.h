@@ -43,4 +43,20 @@ public:
 	/** Is player in ship control mode (vs camera mode) */
 	UPROPERTY(BlueprintReadWrite, Category = "Subspace|Control")
 	bool bIsShipControlMode = true;
+
+	/** Main HUD widget class to spawn */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|UI")
+	TSubclassOf<class UMainHUDWidget> MainHUDClass;
+
+	/** Reference to spawned main HUD widget */
+	UPROPERTY(BlueprintReadOnly, Category = "Subspace|UI")
+	class UMainHUDWidget* MainHUDWidget;
+
+	/** Create and display the main HUD */
+	UFUNCTION(BlueprintCallable, Category = "Subspace|UI")
+	void CreateMainHUD();
+
+	/** Update HUD with current ship stats */
+	UFUNCTION(BlueprintCallable, Category = "Subspace|UI")
+	void UpdateHUD();
 };
