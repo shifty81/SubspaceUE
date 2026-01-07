@@ -64,10 +64,9 @@ void ASubspacePlayerPawn::BeginPlay()
 		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(ShipBaseMaterial, this);
 		if (DynamicMaterial)
 		{
-			// Set a nice ship color (blue-tinted metallic)
-			DynamicMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.2f, 0.4f, 0.8f, 1.0f));
+			// Set ship color using configurable property
+			DynamicMaterial->SetVectorParameterValue(TEXT("Color"), ShipColor);
 			ShipMesh->SetMaterial(0, DynamicMaterial);
-			UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Ship material applied"));
 		}
 	}
 	

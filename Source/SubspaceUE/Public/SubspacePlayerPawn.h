@@ -33,6 +33,10 @@ public:
 	/** Base material for ship mesh */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Ship")
 	class UMaterial* ShipBaseMaterial;
+	
+	/** Ship color for material */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Ship")
+	FLinearColor ShipColor = FLinearColor(0.2f, 0.4f, 0.8f, 1.0f);
 
 	/** Camera component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Subspace|Camera")
