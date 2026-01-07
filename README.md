@@ -729,6 +729,9 @@ For detailed credits and acknowledgments, see [CREDITS.md](CREDITS.md).
 - **[Galaxy Map Guide](docs/guides/GALAXY_MAP_GUIDE.md)** - 🗺️ Complete galaxy map and sector travel documentation
 - **[In-Game Testing Guide](docs/guides/IN_GAME_TESTING_GUIDE.md)** - 🧪 Testing console commands and features
 - **[Quest System Guide](docs/guides/QUEST_SYSTEM_GUIDE.md)** - 📋 Quest creation and management **NEW!**
+- **[Space Scene Generation with UE Store Assets](SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md)** - 🌌 Professional space environments ⭐ **NEW!**
+- **[Skybox Material Guide](SKYBOX_MATERIAL_GUIDE.md)** - 🎨 Creating procedural and textured skyboxes
+- **[Camera and Visual Improvements](CAMERA_AND_VISUAL_IMPROVEMENTS.md)** - 📷 Enhanced visuals and camera controls
 - **[Architecture Review](docs/architecture/ARCHITECTURE.md)** - Comprehensive backend architecture analysis (540+ lines)
 - **[Implementation Roadmap](docs/implementation/IMPLEMENTATION_ROADMAP.md)** - Detailed development plan and timelines
 - **[Dependencies](docs/reference/DEPENDENCIES.md)** - Complete list of project dependencies
