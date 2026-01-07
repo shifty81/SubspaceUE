@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "VoxelMaterial.h"
 #include "VoxelBlock.generated.h"
 
 /**
@@ -63,49 +64,8 @@ enum class EBlockType : uint8
 	IntegrityField UMETA(DisplayName = "Integrity Field")
 };
 
-/**
- * Material properties for different tiers
- */
-USTRUCT(BlueprintType)
-struct FMaterialProperties
-{
-	GENERATED_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	FString Name;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	float DurabilityMultiplier;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	float MassMultiplier;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	float EnergyEfficiency;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	float ShieldMultiplier;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	int32 TechLevel;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
-	FColor Color;
-
-	FMaterialProperties()
-		: Name("Iron")
-		, DurabilityMultiplier(1.0f)
-		, MassMultiplier(1.0f)
-		, EnergyEfficiency(0.8f)
-		, ShieldMultiplier(0.5f)
-		, TechLevel(1)
-		, Color(184, 184, 192) // Iron grey
-	{
-	}
-
-	// Static material definitions
-	static FMaterialProperties GetMaterial(const FString& MaterialName);
-};
+// Note: Material properties are now defined in VoxelMaterial.h
+// Use UVoxelMaterialLibrary for material property access
 
 /**
  * Represents a single voxel block with position, size, and material properties
