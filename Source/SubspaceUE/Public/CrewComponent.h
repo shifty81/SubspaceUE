@@ -165,9 +165,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Crew")
 	TArray<FCrewMember> GetCrewByRole(ECrewRole Role) const;
 
-	/** Get captain */
+	/** Get captain - returns true if captain exists and fills OutCaptain */
 	UFUNCTION(BlueprintCallable, Category = "Crew")
-	FCrewMember* GetCaptain();
+	bool GetCaptain(FCrewMember& OutCaptain);
 
 	// ===== Hiring & Management =====
 
