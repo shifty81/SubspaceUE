@@ -69,16 +69,17 @@ TArray<FCrewMember> UCrewComponent::GetCrewByRole(ECrewRole Role) const
 	return Result;
 }
 
-FCrewMember* UCrewComponent::GetCaptain()
+bool UCrewComponent::GetCaptain(FCrewMember& OutCaptain)
 {
 	for (FCrewMember& Crew : CrewMembers)
 	{
 		if (Crew.Role == ECrewRole::Captain)
 		{
-			return &Crew;
+			OutCaptain = Crew;
+			return true;
 		}
 	}
-	return nullptr;
+	return false;
 }
 
 // ===== Hiring & Management =====
