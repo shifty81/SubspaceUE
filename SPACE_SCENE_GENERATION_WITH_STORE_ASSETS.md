@@ -2,6 +2,8 @@
 
 A comprehensive guide for implementing professional space scenes in SubspaceUE using Unreal Engine Marketplace assets.
 
+> **⚡ Quick Start:** Want to get started immediately? See [SPACE_SCENE_QUICK_START.md](SPACE_SCENE_QUICK_START.md) for a condensed checklist version (2-4 hours to working scene).
+
 ## Overview
 
 This guide provides step-by-step instructions for enhancing the current basic space scene (SpaceSkyboxActor with procedural starfield) using high-quality assets from the Unreal Engine Marketplace and asset stores.
