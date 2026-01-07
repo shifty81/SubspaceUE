@@ -70,6 +70,11 @@ docs/
 - [GAMEPLAY_FEATURES.md](docs/guides/GAMEPLAY_FEATURES.md) - All features
 - [GALAXY_MAP_GUIDE.md](docs/guides/GALAXY_MAP_GUIDE.md) - Galaxy navigation
 
+**Visuals & Environment:**
+- [SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md](SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md) ⭐ **NEW!** - Professional space scenes with UE Store assets
+- [SKYBOX_MATERIAL_GUIDE.md](SKYBOX_MATERIAL_GUIDE.md) - Creating skybox materials
+- [CAMERA_AND_VISUAL_IMPROVEMENTS.md](CAMERA_AND_VISUAL_IMPROVEMENTS.md) - Camera and visual setup
+
 ### 📊 Status & Reference
 **Location:** `docs/reference/`
 - [DEVELOPMENT_STATUS.md](docs/reference/DEVELOPMENT_STATUS.md) - Current status
