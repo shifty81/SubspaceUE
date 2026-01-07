@@ -29,6 +29,10 @@ public:
 	/** Ship mesh component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Subspace|Ship")
 	class UStaticMeshComponent* ShipMesh;
+	
+	/** Base material for ship mesh */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Ship")
+	class UMaterial* ShipBaseMaterial;
 
 	/** Camera component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Subspace|Camera")
@@ -108,7 +112,7 @@ public:
 
 	/** Mouse responsiveness multiplier (higher = more responsive) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
-	float MouseResponsivenessMultiplier = 2.0f;
+	float MouseResponsivenessMultiplier = 0.5f;
 
 	// Input handlers - Public to allow controller access
 	void MoveForward(float Value);

@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "SubspacePlayerController.h"
+#include "Materials/MaterialInstanceDynamic.h"
 
 ASubspacePlayerPawn::ASubspacePlayerPawn()
 {
@@ -23,6 +24,14 @@ ASubspacePlayerPawn::ASubspacePlayerPawn()
 	{
 		ShipMesh->SetStaticMesh(ShipMeshAsset.Object);
 		ShipMesh->SetRelativeScale3D(FVector(4.0f, 8.0f, 2.0f)); // Make it ship-shaped (larger and more visible)
+	}
+	
+	// Load a basic material for the ship (using engine's basic material with proper blend mode)
+	// This will be applied in BeginPlay to create a dynamic material instance
+	static ConstructorHelpers::FObjectFinder<UMaterial> ShipMaterialAsset(TEXT("/Engine/BasicShapes/BasicShapeMaterial"));
+	if (ShipMaterialAsset.Succeeded())
+	{
+		ShipBaseMaterial = ShipMaterialAsset.Object;
 	}
 
 	// Create spring arm for camera
@@ -48,6 +57,19 @@ ASubspacePlayerPawn::ASubspacePlayerPawn()
 void ASubspacePlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	// Create and apply dynamic material instance for the ship mesh
+	if (ShipMesh && ShipBaseMaterial)
+	{
+		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(ShipBaseMaterial, this);
+		if (DynamicMaterial)
+		{
+			// Set a nice ship color (blue-tinted metallic)
+			DynamicMaterial->SetVectorParameterValue(TEXT("Color"), FLinearColor(0.2f, 0.4f, 0.8f, 1.0f));
+			ShipMesh->SetMaterial(0, DynamicMaterial);
+			UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Ship material applied"));
+		}
+	}
 	
 	UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Ship initialized"));
 }
@@ -130,10 +152,11 @@ void ASubspacePlayerPawn::UpdatePhysics(float DeltaTime)
 	}
 
 	// Apply angular velocity to rotation
+	// Invert Y and Z to fix inverted angular motion (negative makes controls feel natural)
 	FRotator DeltaRotation = FRotator(
-		AngularVelocity.Y * DeltaTime,
-		AngularVelocity.Z * DeltaTime,
-		AngularVelocity.X * DeltaTime
+		-AngularVelocity.Y * DeltaTime,  // Pitch (inverted for natural control)
+		-AngularVelocity.Z * DeltaTime,  // Yaw (inverted for natural control)
+		AngularVelocity.X * DeltaTime    // Roll (keep as is)
 	);
 	AddActorLocalRotation(DeltaRotation);
 
