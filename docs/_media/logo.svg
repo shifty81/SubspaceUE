@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100" width="600" height="100">
+  <!-- Icon -->
+  <circle cx="50" cy="50" r="35" fill="#4a90e2"/>
+  <circle cx="50" cy="50" r="35" fill="url(#logoGrad)"/>
+  <ellipse cx="50" cy="50" rx="50" ry="12" fill="none" stroke="#50c9ce" stroke-width="2.5" opacity="0.8"/>
+  
+  <!-- Text -->
+  <text x="110" y="65" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#2c3e50">
+    SubspaceUE
+  </text>
+  
+  <!-- Stars -->
+  <circle cx="20" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
+  <circle cx="75" cy="25" r="1.5" fill="#fff" opacity="0.8"/>
+  <circle cx="70" cy="75" r="1.5" fill="#fff" opacity="0.8"/>
+  
+  <!-- Gradient -->
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5aa5ef;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d6ba6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -547,3 +547,18 @@ CrashReportClient/
 # Encryption key
 Config/GeneratedCryptoKeys.ini
 
+# ============================================
+# Documentation Generated Files
+# ============================================
+
+# Generated PDFs (can be regenerated)
+pdfs/
+*.pdf
+
+# Documentation node modules if used
+docs/node_modules/
+docs/package-lock.json
+
+# Documentation build artifacts
+docs/.docsify/
+

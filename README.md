@@ -6,6 +6,26 @@ A cutting-edge game engine for space exploration and combat, featuring real-time
 > **🌌 Inspired by:** Avorion's gameplay mechanics
 > **🎯 Goal:** Create an extensible, moddable space game engine
 
+---
+
+## 📚 **NEW! Comprehensive Documentation**
+
+> **✨ Complete visual documentation for all aspects of the project!**
+> 
+> **📖 [Interactive Documentation Website](docs/README.md)** - 118+ guides with search, navigation, and diagrams!  
+> **📄 [PDF Documentation](DOCUMENTATION_README.md)** - Download guides as PDFs for offline reading  
+> **🚀 [Complete Setup Guide](docs/COMPLETE_SETUP_GUIDE.md)** - Step-by-step setup from scratch (START HERE!)  
+> **🛠️ [All System Setup Guides](DOCUMENTATION_README.md)** - Ship, AI, Space Scene, and more  
+> 
+> **Quick Start:**
+> ```bash
+> # Serve documentation locally
+> ./serve-docs.sh
+> # Open http://localhost:3000 in browser
+> ```
+
+---
+
 > **🚀 New to Codename:Subspace?** Check out our [Quick Start Guide](QUICKSTART.md) for one-click setup!
 >
 > **🌌 UNREAL ENGINE IMPLEMENTATION:** Want to build Sol-TestingGrounds sector with solar system and spaceship?  
