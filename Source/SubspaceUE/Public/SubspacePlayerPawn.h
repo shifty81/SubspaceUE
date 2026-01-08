@@ -118,6 +118,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
 	float MouseResponsivenessMultiplier = 0.5f;
 
+	/** Boost multiplier when boost is active */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Subspace|Controls")
+	float BoostMultiplier = 2.0f;
+
+	/** Whether boost is currently active */
+	UPROPERTY(BlueprintReadOnly, Category = "Subspace|Controls")
+	bool bBoostActive = false;
+
 	// Input handlers - Public to allow controller access
 	void MoveForward(float Value);
 	void MoveRight(float Value);
@@ -130,6 +138,9 @@ public:
 	void EmergencyBrake();
 	void ZoomCamera(float Value);
 	void ToggleCameraMode();
+	void BoostPressed();
+	void BoostReleased();
+	void ExitShip();
 
 protected:
 	/** Apply thrust in given direction */
