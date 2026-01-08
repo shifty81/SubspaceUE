@@ -165,8 +165,8 @@ void APlanetActor::DrawOrbitPath() const
 				PreviousPoint,
 				Point,
 				FColor::Cyan,
-				false,  // Persistent lines
-				-1.0f,  // Lifetime (persistent if < 0)
+				false,  // bPersistentLines (false = drawn each frame)
+				-1.0f,  // Lifetime (-1 = infinite, redrawn each frame)
 				0,      // Depth priority
 				50.0f   // Thickness
 			);

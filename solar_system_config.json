@@ -2,7 +2,7 @@
   "version": "1.0",
   "date_created": "2026-01-08",
   "scale_factors": {
-    "distance_scale": 1e-05,
+    "distance_scale": 0.00001,
     "planet_size_scale": 50.0,
     "default_time_multiplier": 10000.0
   },
@@ -45,7 +45,7 @@
       "semi_major_axis_au": 1.00000011,
       "eccentricity": 0.01671022,
       "orbital_period_days": 365.256,
-      "inclination_deg": 5e-05,
+      "inclination_deg": 0.00005,
       "longitude_ascending_node_deg": -11.26064,
       "argument_periapsis_deg": 102.94719,
       "mean_anomaly_epoch_deg": 100.46435,
