@@ -2,6 +2,7 @@
 
 #include "SubspaceCharacter.h"
 #include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "SubspacePlayerPawn.h"
 #include "SubspacePlayerController.h"
