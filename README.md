@@ -13,9 +13,9 @@ A cutting-edge game engine for space exploration and combat, featuring real-time
 > **✨ Complete visual documentation for all aspects of the project!**
 > 
 > **📖 [Interactive Documentation Website](docs/README.md)** - 118+ guides with search, navigation, and diagrams!  
-> **📄 [PDF Documentation](DOCUMENTATION_README.md)** - Download guides as PDFs for offline reading  
+> **📄 [PDF Documentation](docs/DOCUMENTATION_README.md)** - Download guides as PDFs for offline reading  
 > **🚀 [Complete Setup Guide](docs/COMPLETE_SETUP_GUIDE.md)** - Step-by-step setup from scratch (START HERE!)  
-> **🛠️ [All System Setup Guides](DOCUMENTATION_README.md)** - Ship, AI, Space Scene, and more  
+> **🛠️ [All System Setup Guides](docs/DOCUMENTATION_README.md)** - Ship, AI, Space Scene, and more  
 > 
 > **Quick Start:**
 > ```bash
@@ -26,10 +26,10 @@ A cutting-edge game engine for space exploration and combat, featuring real-time
 
 ---
 
-> **🚀 New to Codename:Subspace?** Check out our [Quick Start Guide](QUICKSTART.md) for one-click setup!
+> **🚀 New to Codename:Subspace?** Check out our [Quick Start Guide](docs/QUICKSTART.md) for one-click setup!
 >
 > **🌌 UNREAL ENGINE IMPLEMENTATION:** Want to build Sol-TestingGrounds sector with solar system and spaceship?  
-> 👉 **[Sol-TestingGrounds Implementation Guide](SOL_TESTINGGROUNDS_README.md)** - Complete documentation (~95k words)  
+> 👉 **[Sol-TestingGrounds Implementation Guide](docs/SOL_TESTINGGROUNDS_README.md)** - Complete documentation (~95k words)  
 > ✨ Beginner-friendly guides for creating your first playable space sector in UE 5.6!
 > 
 > **✨ LATEST FEATURES:** 
@@ -48,7 +48,7 @@ A cutting-edge game engine for space exploration and combat, featuring real-time
 
 ## 🎮 How to Play
 
-**[See detailed build & run instructions](HOW_TO_BUILD_AND_RUN.md)**
+**[See detailed build & run instructions](docs/HOW_TO_BUILD_AND_RUN.md)**
 
 Quick start:
 ```bash
