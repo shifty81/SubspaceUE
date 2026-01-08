@@ -71,9 +71,16 @@ docs/
 - [GALAXY_MAP_GUIDE.md](docs/guides/GALAXY_MAP_GUIDE.md) - Galaxy navigation
 
 **Visuals & Environment:**
-- [SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md](SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md) ⭐ **NEW!** - Professional space scenes with UE Store assets
+- [SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md](SPACE_SCENE_GENERATION_WITH_STORE_ASSETS.md) ⭐ - Professional space scenes with UE Store assets
 - [SKYBOX_MATERIAL_GUIDE.md](SKYBOX_MATERIAL_GUIDE.md) - Creating skybox materials
 - [CAMERA_AND_VISUAL_IMPROVEMENTS.md](CAMERA_AND_VISUAL_IMPROVEMENTS.md) - Camera and visual setup
+
+**Sol-TestingGrounds Implementation:** ⭐ **NEW!**
+- [SOL_TESTINGGROUNDS_README.md](SOL_TESTINGGROUNDS_README.md) - **START HERE** - Complete documentation index
+- [SOL_TESTINGGROUNDS_IMPLEMENTATION_GUIDE.md](SOL_TESTINGGROUNDS_IMPLEMENTATION_GUIDE.md) - Full implementation guide (~30k words)
+- [SOL_TESTINGGROUNDS_QUICK_START.md](SOL_TESTINGGROUNDS_QUICK_START.md) - Quick checklist (4-6 hours)
+- [SHIP_INTERIOR_GENERATION_GUIDE.md](SHIP_INTERIOR_GENERATION_GUIDE.md) - Ship interior creation (~20k words)
+- [SOL_TESTINGGROUNDS_TROUBLESHOOTING.md](SOL_TESTINGGROUNDS_TROUBLESHOOTING.md) - Common issues and fixes (~22k words)
 
 ### 📊 Status & Reference
 **Location:** `docs/reference/`
