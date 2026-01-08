@@ -1,10 +1,30 @@
 # Sol-TestingGrounds Documentation Index
 
-Welcome! This documentation will help you implement the Sol-TestingGrounds sector as your first spawn location in SubspaceUE, complete with a high-resolution solar system and the spaceship-5 as your starting ship.
+Welcome! This documentation will help you implement the Sol-TestingGrounds sector as your first spawn location in SubspaceUE, complete with a high-resolution solar system with **real-world scale planetary orbits** and the spaceship-5 as your starting ship.
 
 ---
 
-## 📋 Start Here
+## 🆕 NEW: Real-World Scale Orbital Mechanics
+
+**Want planets that actually orbit?** Check out the new orbital mechanics system:
+
+🌍 **[Sol Real-World Scale with Orbits - Quick Setup](SOL_QUICK_SETUP.md)** ⭐ **NEW!**  
+   30-minute setup guide for massive-scale solar system with real planetary orbits
+
+🔬 **[Sol Real-World Scale Implementation Guide](SOL_REALWORLD_SCALE_GUIDE.md)** ⭐ **NEW!**  
+   Complete technical guide with orbital mechanics, scale calculations, and troubleshooting
+
+**Features:**
+- ✅ Actual planetary orbits using Kepler's equations
+- ✅ Real astronomical data for all 8 planets
+- ✅ Configurable scale (distance, size, time) for gameplay
+- ✅ Elliptical orbits with proper eccentricity
+- ✅ Debug visualization showing orbital paths
+- ✅ Time control (pause, speed up, slow down)
+
+---
+
+## 📋 Start Here (Original Static System)
 
 **New to this project or Unreal Engine?** Start with the Quick Start guide:
 

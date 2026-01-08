@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "date_created": "2026-01-08",
+  "scale_factors": {
+    "distance_scale": 1e-05,
+    "planet_size_scale": 50.0,
+    "default_time_multiplier": 10000.0
+  },
+  "constants": {
+    "au_to_km": 149597870.7,
+    "cm_per_km": 100000.0,
+    "sun_diameter_km": 1392700.0
+  },
+  "planets": [
+    {
+      "name": "Mercury",
+      "semi_major_axis_au": 0.38709893,
+      "eccentricity": 0.20563069,
+      "orbital_period_days": 87.969,
+      "inclination_deg": 7.00487,
+      "longitude_ascending_node_deg": 48.33167,
+      "argument_periapsis_deg": 77.45645,
+      "mean_anomaly_epoch_deg": 252.25084,
+      "diameter_km": 4879.4,
+      "mass_earth_masses": 0.0553,
+      "rotation_period_days": 58.646,
+      "has_moons": false
+    },
+    {
+      "name": "Venus",
+      "semi_major_axis_au": 0.72333199,
+      "eccentricity": 0.00677323,
+      "orbital_period_days": 224.701,
+      "inclination_deg": 3.39471,
+      "longitude_ascending_node_deg": 76.68069,
+      "argument_periapsis_deg": 131.53298,
+      "mean_anomaly_epoch_deg": 181.97973,
+      "diameter_km": 12103.6,
+      "mass_earth_masses": 0.815,
+      "rotation_period_days": 243.018,
+      "has_moons": false
+    },
+    {
+      "name": "Earth",
+      "semi_major_axis_au": 1.00000011,
+      "eccentricity": 0.01671022,
+      "orbital_period_days": 365.256,
+      "inclination_deg": 5e-05,
+      "longitude_ascending_node_deg": -11.26064,
+      "argument_periapsis_deg": 102.94719,
+      "mean_anomaly_epoch_deg": 100.46435,
+      "diameter_km": 12742.0,
+      "mass_earth_masses": 1.0,
+      "rotation_period_days": 1.0,
+      "has_moons": true
+    },
+    {
+      "name": "Mars",
+      "semi_major_axis_au": 1.52366231,
+      "eccentricity": 0.09341233,
+      "orbital_period_days": 686.98,
+      "inclination_deg": 1.85061,
+      "longitude_ascending_node_deg": 49.57854,
+      "argument_periapsis_deg": 336.04084,
+      "mean_anomaly_epoch_deg": 355.45332,
+      "diameter_km": 6779.0,
+      "mass_earth_masses": 0.107,
+      "rotation_period_days": 1.026,
+      "has_moons": true
+    },
+    {
+      "name": "Jupiter",
+      "semi_major_axis_au": 5.20336301,
+      "eccentricity": 0.04839266,
+      "orbital_period_days": 4332.589,
+      "inclination_deg": 1.3053,
+      "longitude_ascending_node_deg": 100.55615,
+      "argument_periapsis_deg": 14.75385,
+      "mean_anomaly_epoch_deg": 34.40438,
+      "diameter_km": 139820.0,
+      "mass_earth_masses": 317.8,
+      "rotation_period_days": 0.414,
+      "has_moons": true
+    },
+    {
+      "name": "Saturn",
+      "semi_major_axis_au": 9.53707032,
+      "eccentricity": 0.0541506,
+      "orbital_period_days": 10759.22,
+      "inclination_deg": 2.48446,
+      "longitude_ascending_node_deg": 113.71504,
+      "argument_periapsis_deg": 92.43194,
+      "mean_anomaly_epoch_deg": 49.94432,
+      "diameter_km": 116460.0,
+      "mass_earth_masses": 95.2,
+      "rotation_period_days": 0.444,
+      "has_moons": true
+    },
+    {
+      "name": "Uranus",
+      "semi_major_axis_au": 19.19126393,
+      "eccentricity": 0.04716771,
+      "orbital_period_days": 30688.5,
+      "inclination_deg": 0.76986,
+      "longitude_ascending_node_deg": 74.22988,
+      "argument_periapsis_deg": 170.96424,
+      "mean_anomaly_epoch_deg": 313.23218,
+      "diameter_km": 50724.0,
+      "mass_earth_masses": 14.5,
+      "rotation_period_days": 0.718,
+      "has_moons": true
+    },
+    {
+      "name": "Neptune",
+      "semi_major_axis_au": 30.06896348,
+      "eccentricity": 0.00858587,
+      "orbital_period_days": 60182.0,
+      "inclination_deg": 1.76917,
+      "longitude_ascending_node_deg": 131.72169,
+      "argument_periapsis_deg": 44.97135,
+      "mean_anomaly_epoch_deg": 304.88003,
+      "diameter_km": 49244.0,
+      "mass_earth_masses": 17.1,
+      "rotation_period_days": 0.671,
+      "has_moons": true
+    }
+  ]
+}
