@@ -8,6 +8,7 @@
   * [Quick Start Guide](QUICKSTART.md)
   * [Complete Setup Guide](COMPLETE_SETUP_GUIDE.md)
   * [How to Build & Run](HOW_TO_BUILD_AND_RUN.md)
+  * [Automated Build Guide](AUTOMATED_BUILD_GUIDE.md)
   * [Sol TestingGrounds](SOL_TESTINGGROUNDS_README.md)
   * [Sol Quick Setup](SOL_QUICK_SETUP.md)
 

@@ -1,0 +1,200 @@
+name: Build SubspaceUE Project
+
+on:
+  # Trigger on pushes to main branches
+  push:
+    branches: ["main", "master", "develop"]
+    paths:
+      - 'Source/**'
+      - 'Content/**'
+      - 'Config/**'
+      - '*.uproject'
+      - '.github/workflows/build-project.yml'
+  
+  # Trigger on pull requests
+  pull_request:
+    branches: ["main", "master", "develop"]
+    paths:
+      - 'Source/**'
+      - 'Content/**'
+      - 'Config/**'
+      - '*.uproject'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      build_config:
+        description: 'Build configuration'
+        required: true
+        default: 'Development'
+        type: choice
+        options:
+          - Development
+          - Shipping
+          - DebugGame
+      build_platform:
+        description: 'Build platform'
+        required: true
+        default: 'Linux'
+        type: choice
+        options:
+          - Linux
+          - Win64
+          - Mac
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.build_platform == 'Linux' || github.event.inputs.build_platform == ''
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          lfs: true
+      
+      - name: Setup build environment
+        run: |
+          echo "Setting up build environment..."
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang
+      
+      - name: Validate project structure
+        run: |
+          echo "Validating project structure..."
+          if [ ! -f "SubspaceUE.uproject" ]; then
+            echo "Error: SubspaceUE.uproject not found!"
+            exit 1
+          fi
+          echo "✓ Project file found"
+          
+          if [ ! -d "Source" ]; then
+            echo "Warning: Source directory not found"
+          else
+            echo "✓ Source directory found"
+          fi
+          
+          if [ ! -d "Config" ]; then
+            echo "Error: Config directory not found!"
+            exit 1
+          fi
+          echo "✓ Config directory found"
+      
+      - name: List project contents
+        run: |
+          echo "Project structure:"
+          ls -la
+          echo ""
+          echo "Documentation:"
+          ls -la docs/ | head -20
+      
+      - name: Build documentation notice
+        run: |
+          echo "========================================" 
+          echo "  SubspaceUE Build Validation"
+          echo "========================================" 
+          echo ""
+          echo "✓ Project structure validated"
+          echo "✓ Documentation available at docs/"
+          echo ""
+          echo "Note: Full Unreal Engine build requires:"
+          echo "  - Unreal Engine 5.6 or 5.7 installed"
+          echo "  - See docs/COMPLETE_SETUP_GUIDE.md for details"
+          echo "  - Use build-project.sh for local builds"
+          echo ""
+          echo "This workflow validates the project structure."
+          echo "For full builds, see documentation."
+
+  validate-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Validate documentation structure
+        run: |
+          echo "Validating documentation..."
+          
+          # Check for required documentation files
+          required_files=(
+            "docs/README.md"
+            "docs/COMPLETE_SETUP_GUIDE.md"
+            "docs/QUICKSTART.md"
+            "docs/HOW_TO_BUILD_AND_RUN.md"
+            "docs/index.html"
+          )
+          
+          for file in "${required_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✓ $file"
+            else
+              echo "✗ Missing: $file"
+              exit 1
+            fi
+          done
+          
+          echo ""
+          echo "✓ All required documentation files present"
+      
+      - name: Validate build scripts
+        run: |
+          echo "Validating build scripts..."
+          
+          if [ -f "build-project.sh" ]; then
+            echo "✓ build-project.sh found"
+            if [ -x "build-project.sh" ]; then
+              echo "✓ build-project.sh is executable"
+            else
+              echo "⚠ build-project.sh is not executable"
+            fi
+          else
+            echo "✗ build-project.sh missing"
+            exit 1
+          fi
+          
+          if [ -f "build-project.ps1" ]; then
+            echo "✓ build-project.ps1 found"
+          else
+            echo "✗ build-project.ps1 missing"
+            exit 1
+          fi
+          
+          echo ""
+          echo "✓ All build scripts present"
+      
+      - name: Test documentation server
+        run: |
+          echo "Testing documentation server..."
+          cd docs
+          python3 -m http.server 8080 &
+          SERVER_PID=$!
+          sleep 2
+          
+          # Test if server is running
+          if curl -s http://localhost:8080/README.md | head -5; then
+            echo ""
+            echo "✓ Documentation server works"
+          else
+            echo "✗ Documentation server failed"
+            kill $SERVER_PID
+            exit 1
+          fi
+          
+          kill $SERVER_PID
+      
+      - name: Generate build summary
+        run: |
+          echo "========================================" 
+          echo "  Build Validation Summary"
+          echo "========================================" 
+          echo ""
+          echo "✓ Project structure validated"
+          echo "✓ Documentation validated"
+          echo "✓ Build scripts validated"
+          echo "✓ Documentation server tested"
+          echo ""
+          echo "Project is ready for development!"
+          echo ""
+          echo "See docs/COMPLETE_SETUP_GUIDE.md for setup instructions"
