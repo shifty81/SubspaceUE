@@ -2,12 +2,20 @@
 
 * [🏠 Home](/)
 * [📋 Documentation Index](DOCUMENTATION_INDEX.md)
+* [🎨 Visual Learning Guide](VISUAL_LEARNING_GUIDE.md)
 
 * **🚀 Quick Start**
   * [Quick Start Guide](QUICKSTART.md)
+  * [Complete Setup Guide](COMPLETE_SETUP_GUIDE.md)
   * [How to Build & Run](HOW_TO_BUILD_AND_RUN.md)
   * [Sol TestingGrounds](SOL_TESTINGGROUNDS_README.md)
   * [Sol Quick Setup](SOL_QUICK_SETUP.md)
+
+* **🛠️ System Setup Guides**
+  * [Ship System Setup](SHIP_SYSTEM_SETUP.md)
+  * [Space Scene Setup](SPACE_SCENE_SETUP.md)
+  * [AI System Setup](AI_SYSTEM_SETUP.md)
+  * [Documentation Generation](DOCUMENTATION_GENERATION.md)
 
 * **🏗️ Architecture**
   * [System Architecture](architecture/ARCHITECTURE.md)
