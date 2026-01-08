@@ -153,6 +153,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Interior")
 	void GenerateUlyssesInterior();
 
+	/** Spawn physical interior meshes (walls, floors, objects) */
+	UFUNCTION(BlueprintCallable, Category = "Interior")
+	void SpawnInteriorMeshes();
+
+	/** Clear all spawned interior meshes */
+	UFUNCTION(BlueprintCallable, Category = "Interior")
+	void ClearInteriorMeshes();
+
 protected:
 	/** Generate cockpit/bridge room */
 	FInteriorCell GenerateCockpit();
@@ -165,4 +173,18 @@ protected:
 
 	/** Generate engine room */
 	FInteriorCell GenerateEngineRoom();
+
+	/** Array of spawned interior mesh components */
+	UPROPERTY()
+	TArray<class UStaticMeshComponent*> SpawnedMeshes;
+
+	/** Cached cube mesh for spawning */
+	UPROPERTY()
+	class UStaticMesh* CachedCubeMesh;
+
+	/** Spawn a room mesh (walls, floor, ceiling) */
+	void SpawnRoomMesh(const FInteriorCell& Cell);
+
+	/** Spawn an object mesh */
+	void SpawnObjectMesh(const FInteriorObject& Object, const FVector& CellOffset);
 };

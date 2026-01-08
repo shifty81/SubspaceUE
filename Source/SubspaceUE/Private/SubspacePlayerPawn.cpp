@@ -7,6 +7,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "SubspacePlayerController.h"
 #include "Materials/MaterialInstanceDynamic.h"
+#include "SubspaceCharacter.h"
 
 ASubspacePlayerPawn::ASubspacePlayerPawn()
 {
@@ -109,6 +110,9 @@ void ASubspacePlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	// Bind action inputs
 	PlayerInputComponent->BindAction("Brake", IE_Pressed, this, &ASubspacePlayerPawn::EmergencyBrake);
 	PlayerInputComponent->BindAction("ToggleCameraMode", IE_Pressed, this, &ASubspacePlayerPawn::ToggleCameraMode);
+	PlayerInputComponent->BindAction("Boost", IE_Pressed, this, &ASubspacePlayerPawn::BoostPressed);
+	PlayerInputComponent->BindAction("Boost", IE_Released, this, &ASubspacePlayerPawn::BoostReleased);
+	PlayerInputComponent->BindAction("EnterExitShip", IE_Pressed, this, &ASubspacePlayerPawn::ExitShip);
 	
 	// Bind camera controls
 	PlayerInputComponent->BindAxis("MouseWheelAxis", this, &ASubspacePlayerPawn::ZoomCamera);
@@ -173,7 +177,9 @@ void ASubspacePlayerPawn::MoveForward(float Value)
 {
 	if (Value != 0.0f)
 	{
-		ApplyThrust(FVector(1, 0, 0), Value);
+		// Apply boost multiplier if boost is active
+		float FinalValue = Value * (bBoostActive ? BoostMultiplier : 1.0f);
+		ApplyThrust(FVector(1, 0, 0), FinalValue);
 	}
 }
 
@@ -238,8 +244,10 @@ void ASubspacePlayerPawn::LookRight(float Value)
 {
 	if (Value != 0.0f)
 	{
-		// Apply mouse yaw with sensitivity and inversion
-		float YawValue = Value * MouseYawSensitivity;
+		// Apply mouse yaw with sensitivity
+		// Note: Base value is inverted by default to fix natural left/right control
+		// This can be overridden by setting bInvertMouseYaw to true
+		float YawValue = -Value * MouseYawSensitivity;
 		if (bInvertMouseYaw)
 		{
 			YawValue = -YawValue;
@@ -298,5 +306,47 @@ void ASubspacePlayerPawn::ToggleCameraMode()
 			SpringArm->TargetArmLength = 0.0f;
 		}
 		UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: First person camera enabled"));
+	}
+}
+
+void ASubspacePlayerPawn::BoostPressed()
+{
+	bBoostActive = true;
+	UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Boost activated"));
+}
+
+void ASubspacePlayerPawn::BoostReleased()
+{
+	bBoostActive = false;
+	UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Boost deactivated"));
+}
+
+void ASubspacePlayerPawn::ExitShip()
+{
+	ASubspacePlayerController* PC = Cast<ASubspacePlayerController>(GetController());
+	if (PC)
+	{
+		// Spawn or find the character
+		ASubspaceCharacter* Character = GetWorld()->SpawnActor<ASubspaceCharacter>(
+			ASubspaceCharacter::StaticClass(),
+			GetActorLocation() + GetActorForwardVector() * 200.0f, // Spawn in front of ship
+			GetActorRotation()
+		);
+		
+		if (Character)
+		{
+			// Possess the character
+			PC->Possess(Character);
+			
+			// Make character visible and enable collision
+			Character->SetActorHiddenInGame(false);
+			Character->SetActorEnableCollision(true);
+			
+			UE_LOG(LogTemp, Log, TEXT("SubspacePlayerPawn: Exited ship"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("SubspacePlayerPawn: Failed to spawn character"));
+		}
 	}
 }
