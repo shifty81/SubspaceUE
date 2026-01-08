@@ -7,6 +7,10 @@ A cutting-edge game engine for space exploration and combat, featuring real-time
 > **🎯 Goal:** Create an extensible, moddable space game engine
 
 > **🚀 New to Codename:Subspace?** Check out our [Quick Start Guide](QUICKSTART.md) for one-click setup!
+>
+> **🌌 UNREAL ENGINE IMPLEMENTATION:** Want to build Sol-TestingGrounds sector with solar system and spaceship?  
+> 👉 **[Sol-TestingGrounds Implementation Guide](SOL_TESTINGGROUNDS_README.md)** - Complete documentation (~95k words)  
+> ✨ Beginner-friendly guides for creating your first playable space sector in UE 5.6!
 > 
 > **✨ LATEST FEATURES:** 
 > - 🚀 **MODULAR SHIP SYSTEM** - New Star Sparrow-inspired modular ship design! Ships now built from pre-defined parts instead of voxels! ✨ **NEW!**
