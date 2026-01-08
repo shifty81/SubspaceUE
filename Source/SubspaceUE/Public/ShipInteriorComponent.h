@@ -178,6 +178,10 @@ protected:
 	UPROPERTY()
 	TArray<class UStaticMeshComponent*> SpawnedMeshes;
 
+	/** Cached cube mesh for spawning */
+	UPROPERTY()
+	class UStaticMesh* CachedCubeMesh;
+
 	/** Spawn a room mesh (walls, floor, ceiling) */
 	void SpawnRoomMesh(const FInteriorCell& Cell);
 

@@ -13,7 +13,7 @@ ASubspaceCharacter::ASubspaceCharacter()
 
 	// Create first-person camera
 	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
-	FirstPersonCamera->SetupAttachment(GetMesh(), FName("head")); // Attach to head bone if using skeletal mesh
+	FirstPersonCamera->SetupAttachment(GetCapsuleComponent()); // Attach to capsule root
 	FirstPersonCamera->SetRelativeLocation(FVector(0.0f, 0.0f, 64.0f)); // Position above capsule
 	FirstPersonCamera->bUsePawnControlRotation = true;
 
@@ -105,7 +105,8 @@ void ASubspaceCharacter::LookRight(float Value)
 {
 	if (Value != 0.0f)
 	{
-		// Apply mouse yaw (inverted to fix left/right)
+		// Apply mouse yaw with sensitivity
+		// Note: Inverted by default to match corrected ship controls
 		float YawValue = -Value * MouseYawSensitivity;
 		AddControllerYawInput(YawValue);
 	}
@@ -162,7 +163,7 @@ void ASubspaceCharacter::CheckForNearbyShip()
 	for (AActor* Actor : FoundShips)
 	{
 		ASubspacePlayerPawn* Ship = Cast<ASubspacePlayerPawn>(Actor);
-		if (Ship && Ship != this)
+		if (Ship)
 		{
 			float Distance = FVector::Dist(GetActorLocation(), Ship->GetActorLocation());
 			if (Distance < ClosestDistance)

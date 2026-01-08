@@ -244,8 +244,9 @@ void ASubspacePlayerPawn::LookRight(float Value)
 {
 	if (Value != 0.0f)
 	{
-		// Apply mouse yaw with sensitivity and inversion
-		// Note: Inverted by default to fix the inverted left/right issue
+		// Apply mouse yaw with sensitivity
+		// Note: Base value is inverted by default to fix natural left/right control
+		// This can be overridden by setting bInvertMouseYaw to true
 		float YawValue = -Value * MouseYawSensitivity;
 		if (bInvertMouseYaw)
 		{

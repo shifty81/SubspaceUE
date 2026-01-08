@@ -11,6 +11,13 @@ UShipInteriorComponent::UShipInteriorComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	bInteriorAccessible = true;
+	
+	// Cache the cube mesh for spawning
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMeshFinder(TEXT("/Engine/BasicShapes/Cube"));
+	if (CubeMeshFinder.Succeeded())
+	{
+		CachedCubeMesh = CubeMeshFinder.Object;
+	}
 }
 
 void UShipInteriorComponent::BeginPlay()
@@ -135,11 +142,10 @@ void UShipInteriorComponent::SpawnRoomMesh(const FInteriorCell& Cell)
 		Floor->SetRelativeLocation(FVector(RoomCenter.X, RoomCenter.Y, Cell.MinBounds.Z));
 		Floor->SetRelativeScale3D(FVector(RoomSize.X / 100.0f, RoomSize.Y / 100.0f, 0.1f));
 		
-		// Try to set a basic cube mesh (walls will be cubes scaled to fit)
-		static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("/Engine/BasicShapes/Cube"));
-		if (CubeMesh.Succeeded())
+		// Use cached cube mesh
+		if (CachedCubeMesh)
 		{
-			Floor->SetStaticMesh(CubeMesh.Object);
+			Floor->SetStaticMesh(CachedCubeMesh);
 		}
 		
 		Floor->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
@@ -165,11 +171,10 @@ void UShipInteriorComponent::SpawnObjectMesh(const FInteriorObject& Object, cons
 		ObjectMesh->SetRelativeRotation(Object.Rotation);
 		ObjectMesh->SetRelativeScale3D(Object.Size / 100.0f);
 		
-		// Try to set a basic cube mesh as placeholder
-		static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("/Engine/BasicShapes/Cube"));
-		if (CubeMesh.Succeeded())
+		// Use cached cube mesh as placeholder
+		if (CachedCubeMesh)
 		{
-			ObjectMesh->SetStaticMesh(CubeMesh.Object);
+			ObjectMesh->SetStaticMesh(CachedCubeMesh);
 		}
 		
 		// Make interactive objects highlighted or use different collision
