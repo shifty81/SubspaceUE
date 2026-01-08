@@ -134,7 +134,13 @@ void AUlyssesShip::SetupInterior()
 	// 3. Cargo Bay - Storage area
 	// 4. Engine Room - Power systems
 
-	UE_LOG(LogUlyssesShip, Log, TEXT("Ulysses interior setup complete"));
+	// Generate the interior layout
+	Interior->GenerateUlyssesInterior();
+	
+	// Spawn the physical meshes
+	Interior->SpawnInteriorMeshes();
+
+	UE_LOG(LogUlyssesShip, Log, TEXT("Ulysses interior setup complete with %d rooms"), Interior->Cells.Num());
 }
 
 float AUlyssesShip::GetHullPercentage() const

@@ -1,6 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "ShipInteriorComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "UObject/ConstructorHelpers.h"
+#include "Engine/StaticMesh.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogShipInterior, Log, All);
 
@@ -73,6 +76,114 @@ void UShipInteriorComponent::GenerateUlyssesInterior()
 
 	UE_LOG(LogShipInterior, Log, TEXT("Generated Ulysses interior: %d rooms, %d crew capacity"), 
 		Cells.Num(), GetTotalCrewCapacity());
+}
+
+void UShipInteriorComponent::SpawnInteriorMeshes()
+{
+	// Clear any existing meshes
+	ClearInteriorMeshes();
+
+	AActor* Owner = GetOwner();
+	if (!Owner)
+	{
+		UE_LOG(LogShipInterior, Warning, TEXT("Cannot spawn interior meshes: No owner actor"));
+		return;
+	}
+
+	// Spawn meshes for each cell
+	for (const FInteriorCell& Cell : Cells)
+	{
+		SpawnRoomMesh(Cell);
+
+		// Spawn objects in this cell
+		for (const FInteriorObject& Object : Cell.PlacedObjects)
+		{
+			SpawnObjectMesh(Object, Cell.MinBounds);
+		}
+	}
+
+	UE_LOG(LogShipInterior, Log, TEXT("Spawned %d interior meshes"), SpawnedMeshes.Num());
+}
+
+void UShipInteriorComponent::ClearInteriorMeshes()
+{
+	for (UStaticMeshComponent* Mesh : SpawnedMeshes)
+	{
+		if (Mesh)
+		{
+			Mesh->DestroyComponent();
+		}
+	}
+	SpawnedMeshes.Empty();
+}
+
+void UShipInteriorComponent::SpawnRoomMesh(const FInteriorCell& Cell)
+{
+	AActor* Owner = GetOwner();
+	if (!Owner) return;
+
+	// Calculate room dimensions
+	FVector RoomSize = Cell.MaxBounds - Cell.MinBounds;
+	FVector RoomCenter = (Cell.MinBounds + Cell.MaxBounds) * 0.5f;
+
+	// Spawn floor
+	UStaticMeshComponent* Floor = NewObject<UStaticMeshComponent>(Owner);
+	if (Floor)
+	{
+		Floor->RegisterComponent();
+		Floor->AttachToComponent(Owner->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+		Floor->SetRelativeLocation(FVector(RoomCenter.X, RoomCenter.Y, Cell.MinBounds.Z));
+		Floor->SetRelativeScale3D(FVector(RoomSize.X / 100.0f, RoomSize.Y / 100.0f, 0.1f));
+		
+		// Try to set a basic cube mesh (walls will be cubes scaled to fit)
+		static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("/Engine/BasicShapes/Cube"));
+		if (CubeMesh.Succeeded())
+		{
+			Floor->SetStaticMesh(CubeMesh.Object);
+		}
+		
+		Floor->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		SpawnedMeshes.Add(Floor);
+	}
+
+	// Note: In a full implementation, you would also spawn walls, ceiling, and doors
+	// For now, this provides a basic floor for each room
+}
+
+void UShipInteriorComponent::SpawnObjectMesh(const FInteriorObject& Object, const FVector& CellOffset)
+{
+	AActor* Owner = GetOwner();
+	if (!Owner) return;
+
+	// Spawn object mesh
+	UStaticMeshComponent* ObjectMesh = NewObject<UStaticMeshComponent>(Owner);
+	if (ObjectMesh)
+	{
+		ObjectMesh->RegisterComponent();
+		ObjectMesh->AttachToComponent(Owner->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+		ObjectMesh->SetRelativeLocation(Object.Position);
+		ObjectMesh->SetRelativeRotation(Object.Rotation);
+		ObjectMesh->SetRelativeScale3D(Object.Size / 100.0f);
+		
+		// Try to set a basic cube mesh as placeholder
+		static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("/Engine/BasicShapes/Cube"));
+		if (CubeMesh.Succeeded())
+		{
+			ObjectMesh->SetStaticMesh(CubeMesh.Object);
+		}
+		
+		// Make interactive objects highlighted or use different collision
+		if (Object.bIsInteractive)
+		{
+			ObjectMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		}
+		else
+		{
+			ObjectMesh->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		}
+		
+		SpawnedMeshes.Add(ObjectMesh);
+	}
 }
 
 FInteriorCell UShipInteriorComponent::GenerateCockpit()
