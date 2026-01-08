@@ -87,8 +87,9 @@ For developers
 1. [Quick Start Guide](QUICKSTART.md) - Start here!
 2. [Sol TestingGrounds Quick Start](SOL_QUICK_SETUP.md) - Build your first sector
 3. [How to Build & Run](HOW_TO_BUILD_AND_RUN.md) - Setup instructions
-4. [Controls Guide](CONTROLS_GUIDE.md) - Learn the controls
-5. [Testing Guide](TESTING_GUIDE.md) - Test your setup
+4. [Automated Build Guide](AUTOMATED_BUILD_GUIDE.md) - Automate your builds
+5. [Controls Guide](CONTROLS_GUIDE.md) - Learn the controls
+6. [Testing Guide](TESTING_GUIDE.md) - Test your setup
 
 #### 🎓 **Intermediate** - Ready to build?
 1. [Core Gameplay Mechanics](guides/CORE_GAMEPLAY_MECHANICS.md)
